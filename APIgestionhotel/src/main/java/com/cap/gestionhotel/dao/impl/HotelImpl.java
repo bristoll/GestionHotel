@@ -13,9 +13,6 @@ import com.cap.gestionhotel.dao.HotelDao;
 import com.cap.gestionhotel.dao.entitys.Hotel;
 import com.cap.gestionhotel.dao.mapper.HotelMapper;
 
-
-@RestController
-@RequestMapping("/rest")
 public class HotelImpl implements HotelDao {
 
 	private HotelMapper hotelMapper;
@@ -25,7 +22,6 @@ public class HotelImpl implements HotelDao {
 		this.hotelMapper = hotelMapper;
 	}
 
-	@GetMapping("/hotel")
 	@Override
 	public ResponseEntity<List<Hotel>> getAll() {	
 		return new ResponseEntity<List<Hotel>>(hotelMapper.findAll(), HttpStatus.OK);
