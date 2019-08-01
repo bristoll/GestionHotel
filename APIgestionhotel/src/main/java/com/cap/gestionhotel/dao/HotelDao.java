@@ -8,6 +8,6 @@ import com.cap.gestionhotel.dao.entitys.Hotel;
 
 public interface HotelDao {
 
-	public ResponseEntity<List<Hotel>> getAll();
+	public List<Hotel> getAll();
 	
 }

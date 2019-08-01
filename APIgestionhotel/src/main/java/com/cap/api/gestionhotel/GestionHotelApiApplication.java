@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.cap.gestionhotel.dao.entitys.Hotel;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+@EnableSwagger2
 @MappedTypes(Hotel.class)
 @MapperScan("com.cap.gestionhotel.dao.mapper")
 @SpringBootApplication

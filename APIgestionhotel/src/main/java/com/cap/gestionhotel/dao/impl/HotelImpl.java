@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cap.gestionhotel.dao.HotelDao;
 import com.cap.gestionhotel.dao.entitys.Hotel;
 import com.cap.gestionhotel.dao.mapper.HotelMapper;
-
+@Component
 public class HotelImpl implements HotelDao {
 
 	private HotelMapper hotelMapper;
@@ -23,8 +24,8 @@ public class HotelImpl implements HotelDao {
 	}
 
 	@Override
-	public ResponseEntity<List<Hotel>> getAll() {	
-		return new ResponseEntity<List<Hotel>>(hotelMapper.findAll(), HttpStatus.OK);
+	public List<Hotel> getAll() {	
+		return hotelMapper.findAll();
 	}
 
 	
