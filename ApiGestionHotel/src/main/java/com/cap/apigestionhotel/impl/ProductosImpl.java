@@ -4,22 +4,22 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.cap.apigestionhotel.dao.HabitacionesDao;
-import com.cap.apigestionhotel.dao.entity.Habitaciones;
-import com.cap.apigestionhotel.dao.mapper.HabitacionesMapper;
+import com.cap.apigestionhotel.dao.ProductosDao;
+import com.cap.apigestionhotel.dao.entity.Productos;
+import com.cap.apigestionhotel.dao.mapper.ProductosMapper;
 
 @Component
-public class ProductosImpl implements HabitacionesDao {
+public class ProductosImpl implements ProductosDao {
 
-	private final HabitacionesMapper habitacionesMapper;
+	private final ProductosMapper productosMapper;
 	
-	public ProductosImpl(HabitacionesMapper habitacionesMapper) {
-		this.habitacionesMapper = habitacionesMapper;
+	public ProductosImpl(ProductosMapper productosMapper) {
+		this.productosMapper = productosMapper;
 	}
 
 	@Override
-	public List<Habitaciones> findAll() {		
-		return habitacionesMapper.findAll();
+	public List<Productos> findAll() {		
+		return productosMapper.findAll();
 	}
 
 }

@@ -4,22 +4,22 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.cap.apigestionhotel.dao.HotelesDao;
-import com.cap.apigestionhotel.dao.entity.Hoteles;
-import com.cap.apigestionhotel.dao.mapper.HotelesMapper;
+import com.cap.apigestionhotel.dao.PagoDao;
+import com.cap.apigestionhotel.dao.entity.Pago;
+import com.cap.apigestionhotel.dao.mapper.PagoMapper;
 
 @Component
-public class PagoImpl implements HotelesDao {
+public class PagoImpl implements PagoDao {
 
-	private final HotelesMapper hotelesMapper;
+	private final PagoMapper pagoMapper;
 	
-	public PagoImpl(HotelesMapper hotelesMapper) {
-		this.hotelesMapper = hotelesMapper;
+	public PagoImpl(PagoMapper pagoMapper) {
+		this.pagoMapper = pagoMapper;
 	}
 
 	@Override
-	public List<Hoteles> findAll() {
-		return hotelesMapper.findAll();
+	public List<Pago> findAll() {
+		return pagoMapper.findAll();
 	}
 
 }
