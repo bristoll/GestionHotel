@@ -28,17 +28,16 @@ public class ClientesImpl implements ClientesDao {
 	}
 
 	public void insert(Clientes cliente) {
-		// TODO Auto-generated method stub
+		clientesMapper.insert(cliente);
 		
 	}
 
-	public void update(String nombre, String idClientes) {
-		// TODO Auto-generated method stub
-		
+	public void update(String nombre,String cli_dni) {
+		clientesMapper.update(nombre, cli_dni);
 	}
 
 	public void delete(String idClientes) {
-		// TODO Auto-generated method stub
+		clientesMapper.delete(idClientes);
 		
 	}
 

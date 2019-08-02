@@ -19,8 +19,10 @@ public interface ClientesMapper {
 	@Select("SELECT * FROM clientes where cli_dni = #{cli_dni}")
 	Clientes findCliente(String cli_dni);
 	
+	@Insert("INSERT INTO clientes (cli_dni, cli_nombre, cli_apellido, cli_email, cli_direccion, cli_codigopos, cli_ciudad, password) VALUES (#{cli_dni}, #{cli_nombre}, #{cli_apellido}, #{cli_email}, #{cli_direccion}, #{cli_codigopos}, #{cli_ciudad}, #{password})")
+    void insert(Clientes cliente);
 	
-	@Update("UPDATE clientes SET nombre = #{nombre} where cli_dni=#{cli_dni}")
+	@Update("UPDATE clientes SET cli_nombre = #{nombre} where cli_dni=#{cli_dni}")
 	void update(String nombre,String cli_dni);
 	
 	@Update("DELETE from clientes where cli_dni=#{cli_dni}")
