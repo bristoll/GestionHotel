@@ -25,6 +25,7 @@ public class ClientesController {
 		return new ResponseEntity<>(clientesImpl.findAll(), HttpStatus.OK);
     }
 	
+	//Para obtener cliente especifico mediante Id
 	@GetMapping("/clientes/{cli_dni}")
     public ResponseEntity<Clientes> findCliente(@PathVariable String cli_dni) {
 		return new ResponseEntity<>(clientesImpl.findCliente(cli_dni), HttpStatus.OK);
