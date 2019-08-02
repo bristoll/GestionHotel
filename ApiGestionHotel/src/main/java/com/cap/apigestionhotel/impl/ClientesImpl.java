@@ -27,4 +27,19 @@ public class ClientesImpl implements ClientesDao {
 		return clientesMapper.findCliente(cli_dni);
 	}
 
+	public void insert(Clientes cliente) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void update(String nombre, String idClientes) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void delete(String idClientes) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
