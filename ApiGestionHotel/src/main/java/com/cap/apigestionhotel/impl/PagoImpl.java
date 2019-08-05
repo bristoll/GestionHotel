@@ -24,24 +24,20 @@ public class PagoImpl implements PagoDao {
 	}
 
 	public Pago findPago(int pag_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return pagoMapper.findPago(pag_id);
 	}
 
 	public void insert(Pago pago) {
-		// TODO Auto-generated method stub
-		
+		pagoMapper.insert(pago);		
 	}
 
 
 	public void update(int pag_id, int pag_re_id, float pag_total, Date pag_fecha_pago) {
-		// TODO Auto-generated method stub
-		
+		pagoMapper.update(pag_id, pag_re_id, pag_total, pag_fecha_pago);	
 	}
 
 	public void delete(int pag_id) {
-		// TODO Auto-generated method stub
-		
+		pagoMapper.delete(pag_id);		
 	}
 
 }
