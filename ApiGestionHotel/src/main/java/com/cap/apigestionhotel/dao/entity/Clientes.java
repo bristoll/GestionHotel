@@ -9,7 +9,7 @@ public class Clientes {
 	private String cli_direccion;
 	private int cli_codigopos;
 	private String cli_ciudad;
-	private int password;
+	private String password;
 	
 	public String getCli_dni() {
 		return cli_dni;
@@ -53,10 +53,10 @@ public class Clientes {
 	public void setCli_ciudad(String cli_ciudad) {
 		this.cli_ciudad = cli_ciudad;
 	}
-	public int getPassword() {
+	public String getPassword() {
 		return password;
 	}
-	public void setPassword(int password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 			
