@@ -53,8 +53,8 @@ public class ProductosController {
     }
 	
 	@PutMapping("/productos/{pro_id}")
-	public ResponseEntity<Productos> update(@PathVariable("pro_id") int pro_id, String pro_nombre, String pro_unidad_medida, float pro_precio_venta) {
-		productosImpl.update(pro_id, pro_nombre, pro_unidad_medida, pro_precio_venta);
+	public ResponseEntity<Productos> update(Productos producto) {
+		productosImpl.update(producto);
 		return new ResponseEntity<Productos>(HttpStatus.OK);
 	}
 	

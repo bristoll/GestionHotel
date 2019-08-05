@@ -54,8 +54,8 @@ public class PagoController {
 	    }
 		
 		@PutMapping("/pago/{pag_id}")
-		public ResponseEntity<Pago> update(@PathVariable("pag_id") int pag_id, int pag_re_id, float pag_total, Date pag_fecha_pago) {
-			pagoImpl.update(pag_id, pag_re_id,pag_total,pag_fecha_pago);
+		public ResponseEntity<Pago> update(Pago pago) {
+			pagoImpl.update(pago);
 			return new ResponseEntity<Pago>(HttpStatus.OK);
 		}
 		

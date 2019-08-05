@@ -8,6 +8,5 @@ import com.cap.apigestionhotel.dao.entity.Productos;
 public interface ProductosDao {
 	
 	public List<Productos> findAll();
-	public Clientes findCliente(String cli_dni);
 
 }

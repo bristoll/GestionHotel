@@ -32,12 +32,14 @@ public class PagoImpl implements PagoDao {
 	}
 
 
-	public void update(int pag_id, int pag_re_id, float pag_total, Date pag_fecha_pago) {
-		pagoMapper.update(pag_id, pag_re_id, pag_total, pag_fecha_pago);	
+	public void update(Pago pago) {	
+		pagoMapper.update(pago);	
 	}
 
 	public void delete(int pag_id) {
 		pagoMapper.delete(pag_id);		
 	}
+
+
 
 }
