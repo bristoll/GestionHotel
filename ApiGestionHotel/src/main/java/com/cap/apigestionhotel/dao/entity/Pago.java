@@ -4,7 +4,8 @@ import java.sql.Date;
 
 public class Pago {
 	
-	private int pag_id, pag_re_id, pag_total;
+	private int pag_id, pag_re_id;
+	private float pag_total;
 	private Date pag_fecha_pago;
 	
 	
@@ -24,11 +25,11 @@ public class Pago {
 		this.pag_re_id = pag_re_id;
 	}
 	
-	public int getPag_total() {
+	public float getPag_total() {
 		return pag_total;
 	}
 	
-	public void setPag_total(int pag_total) {
+	public void setPag_total(float pag_total) {
 		this.pag_total = pag_total;
 	}
 	

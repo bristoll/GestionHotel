@@ -35,7 +35,7 @@ public class ClientesController {
 		return new ResponseEntity<>(clientesImpl.findCliente(cli_dni), HttpStatus.OK);
     }
 	@PostMapping("/clientes")
-    public ResponseEntity<Object> insert(String cli_dni, String cli_nombre, String cli_apellido, String cli_ciudad, String cli_direccion, String cli_email, int cli_codigopos, int password) {
+    public ResponseEntity<Clientes> insert(String cli_dni, String cli_nombre, String cli_apellido, String cli_ciudad, String cli_direccion, String cli_email, int cli_codigopos, int password) {
 
         Clientes cliente = new Clientes();
         cliente.setCli_apellido(cli_apellido);
@@ -49,19 +49,19 @@ public class ClientesController {
         
         clientesImpl.insert(cliente);
 
-        return new ResponseEntity<Object>("Insertado correctamente",HttpStatus.CREATED);//La cadena es opcional
+        return new ResponseEntity<Clientes>(HttpStatus.CREATED);//La cadena es opcional
     }
 	
 	@PutMapping("/clientes/{idClientes}")
-	public ResponseEntity<Object> update(String nombre,@PathVariable("idClientes") String idClientes) {//No se si es correcto meterle el nombre aqui ya que no aparece en la uri
+	public ResponseEntity<Clientes> update(String nombre,@PathVariable("idClientes") String idClientes) {//No se si es correcto meterle el nombre aqui ya que no aparece en la uri
 		clientesImpl.update(nombre, idClientes);
-		return new ResponseEntity<Object>(HttpStatus.OK);
+		return new ResponseEntity<Clientes>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/clientes/{idClientes}")
-	public ResponseEntity<Object> delete(@PathVariable("idClientes") String idClientes) {
+	public ResponseEntity<Clientes> delete(@PathVariable("idClientes") String idClientes) {
 		clientesImpl.delete(idClientes);
-		return new ResponseEntity<Object>("cliente borrado", HttpStatus.OK);
+		return new ResponseEntity<Clientes>(HttpStatus.OK);
 	}
 	
 }

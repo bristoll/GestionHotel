@@ -22,4 +22,24 @@ public class ProductosImpl implements ProductosDao {
 		return productosMapper.findAll();
 	}
 
+	public Productos findProductos(int pro_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void insert(Productos producto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void update(int pro_id, String pro_nombre, String pro_unidad_medida, float pro_precio_venta) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void delete(int pro_id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
