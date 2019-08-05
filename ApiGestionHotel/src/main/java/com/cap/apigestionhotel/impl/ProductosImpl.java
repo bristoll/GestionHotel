@@ -23,23 +23,19 @@ public class ProductosImpl implements ProductosDao {
 	}
 
 	public Productos findProductos(int pro_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return productosMapper.findProductos(pro_id);
 	}
 
 	public void insert(Productos producto) {
-		// TODO Auto-generated method stub
-		
+		productosMapper.insert(producto);	
 	}
 
 	public void update(int pro_id, String pro_nombre, String pro_unidad_medida, float pro_precio_venta) {
-		// TODO Auto-generated method stub
-		
+		productosMapper.update( pro_id,  pro_nombre,  pro_unidad_medida,  pro_precio_venta);	
 	}
 
 	public void delete(int pro_id) {
-		// TODO Auto-generated method stub
-		
+		productosMapper.delete(pro_id);	
 	}
 
 }
