@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -35,17 +36,7 @@ public class ClientesController {
 		return new ResponseEntity<>(clientesImpl.findCliente(cli_dni), HttpStatus.OK);
     }
 	@PostMapping("/clientes")
-    public ResponseEntity<Clientes> insert(String cli_dni, String cli_nombre, String cli_apellido, String cli_ciudad, String cli_direccion, String cli_email, int cli_codigopos, int password) {
-
-        Clientes cliente = new Clientes();
-        cliente.setCli_apellido(cli_apellido);
-        cliente.setCli_ciudad(cli_ciudad);
-        cliente.setCli_codigopos(cli_codigopos);
-        cliente.setCli_direccion(cli_direccion);
-        cliente.setCli_dni(cli_dni);
-        cliente.setCli_email(cli_email);
-        cliente.setCli_nombre(cli_nombre);
-        cliente.setPassword(password);
+    public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {
         
         clientesImpl.insert(cliente);
 
