@@ -42,14 +42,14 @@ public class ClientesController {
     }
 	
 	@PutMapping("/clientes/{idClientes}")
-	public ResponseEntity<Clientes> update(String nombre,@PathVariable("idClientes") String idClientes) {//No se si es correcto meterle el nombre aqui ya que no aparece en la uri
-		clientesImpl.update(nombre, idClientes);
+	public ResponseEntity<Clientes> update(@ModelAttribute Clientes cliente) {//No se si es correcto meterle el nombre aqui ya que no aparece en la uri
+		clientesImpl.update(cliente);
 		return new ResponseEntity<Clientes>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/clientes/{idClientes}")
-	public ResponseEntity<Clientes> delete(@PathVariable("idClientes") String idClientes) {
-		clientesImpl.delete(idClientes);
+	public ResponseEntity<Clientes> delete(@ModelAttribute Clientes cliente) {
+		clientesImpl.delete(cliente.getCli_dni());
 		return new ResponseEntity<Clientes>(HttpStatus.OK);
 	}
 	
