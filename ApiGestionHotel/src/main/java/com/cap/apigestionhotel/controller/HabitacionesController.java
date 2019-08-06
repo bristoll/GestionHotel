@@ -30,26 +30,26 @@ public class HabitacionesController {
 		return new ResponseEntity<>(habitacionesImpl.findAll(), HttpStatus.OK);
     }
 	
-	@GetMapping("/clientes/{cli_dni}")
-    public ResponseEntity<Habitaciones> findCliente(@PathVariable int ha_id) {
+	@GetMapping("/habitaciones/{Ha_id}")
+    public ResponseEntity<Habitaciones> findHabitacion(@PathVariable int ha_id) {
 		return new ResponseEntity<>(habitacionesImpl.findHabitaciones(ha_id), HttpStatus.OK);
     }
 	
-	@PostMapping("/clientes")
-    public ResponseEntity<Clientes> insert(@ModelAttribute Habitaciones habitacione) {        
+	@PostMapping("/habitaciones")
+    public ResponseEntity<Habitaciones> insert(@ModelAttribute Habitaciones habitacione) {        
 		habitacionesImpl.insert(habitacione);
-        return new ResponseEntity<Clientes>(HttpStatus.CREATED);
+        return new ResponseEntity<Habitaciones>(HttpStatus.CREATED);
     }
 	
-	@PutMapping("/clientes/{idClientes}")
-	public ResponseEntity<Clientes> update(@ModelAttribute Habitaciones habitacione) {
-		habitacionesImpl.update(habitacione);
-		return new ResponseEntity<Clientes>(HttpStatus.OK);
+	@PutMapping("/habitaciones/{Ha_id}")
+	public ResponseEntity<Habitaciones> update(@ModelAttribute Habitaciones habitacion) {
+		habitacionesImpl.update(habitacion);
+		return new ResponseEntity<Habitaciones>(HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/clientes/{idClientes}")
-	public ResponseEntity<Clientes> delete(@ModelAttribute Habitaciones habitacione) {
-		habitacionesImpl.delete(habitacione.getHa_id());
-		return new ResponseEntity<Clientes>(HttpStatus.OK);
+	@DeleteMapping("/habitaciones/{Ha_id}")
+	public ResponseEntity<Habitaciones> delete(@ModelAttribute Habitaciones habitacion) {
+		habitacionesImpl.delete(habitacion.getHa_id());
+		return new ResponseEntity<Habitaciones>(HttpStatus.OK);
 	}
 }
