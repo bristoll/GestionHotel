@@ -36,10 +36,8 @@ public class ClientesController {
 		return new ResponseEntity<>(clientesImpl.findCliente(cli_dni), HttpStatus.OK);
     }
 	@PostMapping("/clientes")
-    public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {
-        
+    public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {        
         clientesImpl.insert(cliente);
-
         return new ResponseEntity<Clientes>(HttpStatus.CREATED);//La cadena es opcional
     }
 	
