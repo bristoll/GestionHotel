@@ -47,7 +47,7 @@ public class ReservasController {
         return new ResponseEntity<Reservas>(HttpStatus.CREATED);//La cadena es opcional
     }
 	
-	@PutMapping("/reservas/{ho_id}")
+	@PutMapping("/reservas/{re_id}")
 	public ResponseEntity<Reservas> update(@ModelAttribute Reservas reserva) {//No se si es correcto meterle el nombre aqui ya que no aparece en la uri
 		reservasImpl.update(reserva);
 		return new ResponseEntity<Reservas>(HttpStatus.OK);
