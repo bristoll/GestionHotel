@@ -16,38 +16,67 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.apigestionhotel.dao.entity.Hoteles;
 import com.cap.apigestionhotel.impl.HotelesImpl;
+import com.cap.apigestionhotel.service.HotelesService;
 
 @RestController
 @RequestMapping("/rest")
 public class HotelesController {
 
+//	@Autowired
+//	HotelesImpl hotelesImpl;
+//	
+//	@GetMapping("/hoteles")
+//    public ResponseEntity<List<Hoteles>> findAll() {
+//		return new ResponseEntity<>(hotelesImpl.findAll(), HttpStatus.OK);
+//    }
+//	@GetMapping("/hoteles/{ho_id}")
+//    public ResponseEntity<Hoteles> findCliente(@PathVariable int ho_id) {
+//		return new ResponseEntity<>(hotelesImpl.findHotel(ho_id), HttpStatus.OK);
+//    }
+//	@PostMapping("/hoteles")
+//    public ResponseEntity<Hoteles> insert(@ModelAttribute Hoteles hotel) {        
+//        hotelesImpl.insert(hotel);
+//        return new ResponseEntity<Hoteles>(HttpStatus.CREATED);//La cadena es opcional
+//    }
+//	
+//	@PutMapping("/hoteles/{ho_id}")
+//	public ResponseEntity<Hoteles> update(@ModelAttribute Hoteles hotel) {//No se si es correcto meterle el nombre aqui ya que no aparece en la uri
+//		hotelesImpl.update(hotel);
+//		return new ResponseEntity<Hoteles>(HttpStatus.OK);
+//	}
+//	
+//	@DeleteMapping("/hoteles/{ho_id}")
+//	public ResponseEntity<Hoteles> delete(@ModelAttribute Hoteles hotel) {
+//		hotelesImpl.delete(hotel.getHo_id());
+//		return new ResponseEntity<Hoteles>(HttpStatus.OK);
+//	}
+
 	@Autowired
-	HotelesImpl hotelesImpl;
-	
+	HotelesService hotelesService;
+
 	@GetMapping("/hoteles")
-    public ResponseEntity<List<Hoteles>> findAll() {
-		return new ResponseEntity<>(hotelesImpl.findAll(), HttpStatus.OK);
-    }
+	public ResponseEntity<List<Hoteles>> findAll() {
+		return hotelesService.findAll();
+	}
+
 	@GetMapping("/hoteles/{ho_id}")
-    public ResponseEntity<Hoteles> findCliente(@PathVariable int ho_id) {
-		return new ResponseEntity<>(hotelesImpl.findHotel(ho_id), HttpStatus.OK);
-    }
-	@PostMapping("/hoteles")
-    public ResponseEntity<Hoteles> insert(@ModelAttribute Hoteles hotel) {        
-        hotelesImpl.insert(hotel);
-        return new ResponseEntity<Hoteles>(HttpStatus.CREATED);//La cadena es opcional
-    }
-	
-	@PutMapping("/hoteles/{ho_id}")
-	public ResponseEntity<Hoteles> update(@ModelAttribute Hoteles hotel) {//No se si es correcto meterle el nombre aqui ya que no aparece en la uri
-		hotelesImpl.update(hotel);
-		return new ResponseEntity<Hoteles>(HttpStatus.OK);
+	public ResponseEntity<Hoteles> findHotel(@PathVariable int ho_id) {
+		return hotelesService.findHotel(ho_id);
 	}
 	
+	@PostMapping("/hoteles")
+	public ResponseEntity<Hoteles> insert(@ModelAttribute Hoteles hotel) {
+		return hotelesService.insert(hotel);
+	}
+
+	@PutMapping("/hoteles/{ho_id}")
+	public ResponseEntity<Hoteles> update(@ModelAttribute Hoteles hotel) {
+		return hotelesService.update(hotel);
+	}
+
 	@DeleteMapping("/hoteles/{ho_id}")
 	public ResponseEntity<Hoteles> delete(@ModelAttribute Hoteles hotel) {
-		hotelesImpl.delete(hotel.getHo_id());
-		return new ResponseEntity<Hoteles>(HttpStatus.OK);
+		return hotelesService.delete(hotel);
 	}
-	
+
 }

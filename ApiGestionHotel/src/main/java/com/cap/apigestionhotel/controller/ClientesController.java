@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.apigestionhotel.dao.entity.Clientes;
+import com.cap.apigestionhotel.dto.ClienteSimpleDto;
 import com.cap.apigestionhotel.impl.ClientesImpl;
 
 
@@ -52,5 +53,14 @@ public class ClientesController {
 		clientesImpl.delete(cliente.getCli_dni());
 		return new ResponseEntity<Clientes>(HttpStatus.OK);
 	}
+	
+	@GetMapping("/clientes/simple/{cli_dni}")
+    public ResponseEntity<ClienteSimpleDto> findClienteSimple(@PathVariable String cli_dni) {
+		
+		Clientes cliente = clientesImpl.findCliente(cli_dni);
+		String nombreCompleto = cliente.getCli_nombre() + " " + cliente.getCli_apellido();
+		
+		return new ResponseEntity<>(new ClienteSimpleDto(cliente.getCli_dni(), nombreCompleto, cliente.getCli_email(), cliente.getCli_ciudad()), HttpStatus.OK);
+    }
 	
 }

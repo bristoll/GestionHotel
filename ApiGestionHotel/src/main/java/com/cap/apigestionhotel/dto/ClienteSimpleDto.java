@@ -7,6 +7,12 @@ public class ClienteSimpleDto {
 	private String email;
 	private String ciudad;
 	
+	public ClienteSimpleDto(String dni, String nombreCompleto, String email, String ciudad) {
+		this.dni = dni;
+		this.nombreCompleto = nombreCompleto;
+		this.email = email;
+		this.ciudad = ciudad;
+	}
 	public String getDni() {
 		return dni;
 	}
