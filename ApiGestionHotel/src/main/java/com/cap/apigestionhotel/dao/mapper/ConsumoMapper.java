@@ -17,7 +17,7 @@ public interface ConsumoMapper {
 	List<Consumo> findAll();
 	
 	@Select("SELECT * FROM clientes where cli_dni = #{cli_dni}")
-	Clientes findCliente(int con_id);
+	Consumo findConsumo(int con_id);
 	
 	@Insert("INSERT INTO consumo (con_re_id, con_pro_id, con_cantidad, con_precio_venta, con_estado) VALUES (#{con_re_id}, #{con_pro_id}, #{con_cantidad}, #{con_precio_venta}, #{con_estado})")
     void insert(Consumo consumo);

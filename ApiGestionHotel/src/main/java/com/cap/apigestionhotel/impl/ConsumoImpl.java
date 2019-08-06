@@ -18,13 +18,33 @@ public class ConsumoImpl implements ConsumoDao {
 	}
 
 	public ConsumoImpl(ConsumoMapper consumoMapper) {
-		super();
 		this.consumoMapper = consumoMapper;
 	}
 
 	@Override
 	public List<Consumo> findAll() {
 		return consumoMapper.findAll();
+	}
+
+	@Override
+	public Consumo findConsumo(int con_id) {
+		return consumoMapper.findConsumo(con_id);
+	}
+
+	@Override
+	public void insert(Consumo consumo) {
+		consumoMapper.insert(consumo);
+		
+	}
+
+	@Override
+	public void update(Consumo consumo) {
+		consumoMapper.update(consumo);		
+	}
+
+	@Override
+	public void delete(int con_id) {
+		consumoMapper.delete(con_id);		
 	}
 	
 	
