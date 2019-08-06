@@ -31,11 +31,7 @@ public class ReservasController {
 		return new ResponseEntity<>(reservasImpl.findAll(), HttpStatus.OK);
     }
 	
-	//Para obtener cliente especifico mediante Id
-	@GetMapping("/reservas/{re_id}")
-    public ResponseEntity<Reservas> findReserva(@ModelAttribute Reservas reserva) {
-		return new ResponseEntity<>(reservasImpl.findReserva(reserva.getRe_id()), HttpStatus.OK);
-    }
+
 	
 	@GetMapping("/reservas/{re_id}")
     public ResponseEntity<Reservas> findCliente(@PathVariable int re_id) {
