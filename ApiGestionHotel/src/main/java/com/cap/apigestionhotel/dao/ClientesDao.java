@@ -11,6 +11,6 @@ public interface ClientesDao {
 	
 	public Clientes findCliente(String cli_dni);
 	public void insert(Clientes cliente);
-	public void update(String nombre,String cli_dni);
+	public void update(Clientes cliente);
 	public void delete(String cli_dni);
 }

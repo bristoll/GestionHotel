@@ -7,7 +7,7 @@ import com.cap.apigestionhotel.dao.entity.Reservas;
 
 
 
-public interface ReservasDAO {
+public interface ReservasDao {
  
 	public List<Reservas> findAll();
 	
