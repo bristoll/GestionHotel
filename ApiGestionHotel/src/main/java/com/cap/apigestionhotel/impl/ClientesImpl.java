@@ -39,8 +39,8 @@ public class ClientesImpl implements ClientesDao {
 	}
 
 	@Override
-	public void delete(String idClientes) {
-		clientesMapper.delete(idClientes);
+	public void delete(String cli_dni) {
+		clientesMapper.delete(cli_dni);
 		
 	}
 

@@ -18,7 +18,7 @@ public interface HotelesMapper {
 	List<Hoteles> findAll();
 	
 	@Select("SELECT * FROM hoteles where ho_id = #{ho_id}")
-	Clientes findCliente(int ho_id);
+	Hoteles findHotel(int ho_id);
 	
 	@Insert("INSERT INTO hoteles (ho_id, ho_nombre, ho_categoria, ho_zona, ho_direccion) "
 			+ "VALUES (#{ho_id}, #{ho_nombre}, #{ho_categoria}, #{ho_zona}, #{ho_direccion}")

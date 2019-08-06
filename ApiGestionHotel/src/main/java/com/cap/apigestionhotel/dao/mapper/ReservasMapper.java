@@ -19,7 +19,7 @@ public interface ReservasMapper {
 	List<Reservas> findAll();
 	
 	@Select("SELECT * FROM reservas where re_id = #{re_id}")
-	Reservas findReserva(String re_id);
+	Reservas findReserva(int re_id);
 
 	@Insert("INSERT INTO reservas (re_id, re_cli_dni, re_ha_id, re_fecha_reserva, re_fecha_ini,re_fecha_fin,re_coste_alojamiento,re_estado) "
 			+ "VALUES (#{re_id}, #{re_cli_dni}, #{re_ha_id}, #{re_fecha_reserva}, #{re_fecha_ini},#{re_fecha_fin},#{re_coste_alojamiento},#{re_estado}")

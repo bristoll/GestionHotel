@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.cap.apigestionhotel.dao.HotelesDao;
+
 import com.cap.apigestionhotel.dao.entity.Hoteles;
 import com.cap.apigestionhotel.dao.mapper.HotelesMapper;
 
@@ -20,6 +21,28 @@ public class HotelesImpl implements HotelesDao {
 	@Override
 	public List<Hoteles> findAll() {
 		return hotelesMapper.findAll();
+	}
+	
+	@Override
+	public Hoteles findHotel(int ho_id) {		
+		return hotelesMapper.findHotel(ho_id);
+	}
+
+	@Override
+	public void insert(Hoteles hotel) {
+		hotelesMapper.insert(hotel);
+		
+	}
+
+	@Override
+	public void update(Hoteles hotel) {
+		hotelesMapper.update(hotel);
+	}
+
+	@Override
+	public void delete(int ho_id) {
+		hotelesMapper.delete(ho_id);
+		
 	}
 
 }
