@@ -23,7 +23,7 @@ public interface ClientesMapper {
     void insert(Clientes cliente);
 	
 	@Update("UPDATE clientes SET cli_nombre = #{nombre} where cli_dni=#{cli_dni}")
-	void update(String nombre,String cli_dni);
+	void update(Clientes cliente);
 	
 	@Update("DELETE from clientes where cli_dni=#{cli_dni}")
 	void delete(String cli_dni);

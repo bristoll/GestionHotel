@@ -23,18 +23,22 @@ public class ProductosImpl implements ProductosDao {
 		return productosMapper.findAll();
 	}
 
+	@Override
 	public Productos findProductos(int pro_id) {
 		return productosMapper.findProductos(pro_id);
 	}
 
+	@Override
 	public void insert(Productos producto) {
 		productosMapper.insert(producto);	
 	}
 
+	@Override
 	public void update(Productos producto) {
 		productosMapper.update(producto);	
 	}
 
+	@Override
 	public void delete(int pro_id) {
 		productosMapper.delete(pro_id);	
 	}

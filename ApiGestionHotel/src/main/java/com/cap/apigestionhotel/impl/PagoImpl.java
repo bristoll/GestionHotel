@@ -23,19 +23,22 @@ public class PagoImpl implements PagoDao {
 		return pagoMapper.findAll();
 	}
 
+	@Override
 	public Pago findPago(int pag_id) {
 		return pagoMapper.findPago(pag_id);
 	}
 
+	@Override
 	public void insert(Pago pago) {
 		pagoMapper.insert(pago);		
 	}
 
-
+	@Override
 	public void update(Pago pago) {	
 		pagoMapper.update(pago);	
 	}
 
+	@Override
 	public void delete(int pag_id) {
 		pagoMapper.delete(pag_id);		
 	}
