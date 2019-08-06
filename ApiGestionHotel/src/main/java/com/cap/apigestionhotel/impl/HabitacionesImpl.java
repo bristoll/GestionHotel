@@ -22,4 +22,25 @@ public class HabitacionesImpl implements HabitacionesDao {
 		return habitacionesMapper.findAll();
 	}
 
+	@Override
+	public Habitaciones findHabitaciones(int ha_id) {
+		return habitacionesMapper.findHabitacion(ha_id);
+	}
+
+	@Override
+	public void insert(Habitaciones habitacion) {
+		habitacionesMapper.insert(habitacion);
+		
+	}
+
+	@Override
+	public void update(Habitaciones habitacion) {
+		habitacionesMapper.update(habitacion);
+	}
+
+	@Override
+	public void delete(int ha_id) {
+		habitacionesMapper.delete(ha_id);
+	}
+
 }

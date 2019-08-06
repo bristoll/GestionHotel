@@ -8,4 +8,9 @@ public interface HabitacionesDao {
 
 	public List<Habitaciones> findAll();
 	
+	public Habitaciones findHabitaciones(int ha_id);
+	public void insert(Habitaciones habitacion);
+	public void update(Habitaciones habitacion);
+	public void delete(int ha_id);
+	
 }

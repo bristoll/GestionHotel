@@ -27,4 +27,21 @@ public class ClientesImpl implements ClientesDao {
 		return clientesMapper.findCliente(cli_dni);
 	}
 
+	@Override
+	public void insert(Clientes cliente) {
+		clientesMapper.insert(cliente);
+		
+	}
+
+	@Override
+	public void update(Clientes cliente) {
+		clientesMapper.update(cliente);
+	}
+
+	@Override
+	public void delete(String cli_dni) {
+		clientesMapper.delete(cli_dni);
+		
+	}
+
 }
