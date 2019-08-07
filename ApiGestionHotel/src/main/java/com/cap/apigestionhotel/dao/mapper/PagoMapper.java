@@ -16,10 +16,10 @@ public interface PagoMapper {
 	@Select("SELECT * FROM pago")
 	List<Pago> findAll();
 
-	@Insert("INSERT INTO pago (pag_id, pag_re_id, pag_total, pag_fecha_pago) VALUES (#{pag_id}, #{pag_re_id}, #{pag_total}, #{pag_fecha_pago})")
+	@Select("SELECT * FROM pago where pag_id = #{pag_id}")
 	Pago findPago(int pag_id);
 
-	@Select("SELECT * FROM pago where pag_id = #{pag_id}")
+	@Insert("INSERT INTO pago (pag_id, pag_re_id, pag_total, pag_fecha_pago) VALUES (#{pag_id}, #{pag_re_id}, #{pag_total}, #{pag_fecha_pago})")
 	void insert(Pago pago);
 
 	@Update("UPDATE pago SET pag_re_id = #{pag_re_id}, pag_total = #{pag_total},pag_fecha_pago = #{pag_fecha_pago} = where pag_id=#{pag_id}")
