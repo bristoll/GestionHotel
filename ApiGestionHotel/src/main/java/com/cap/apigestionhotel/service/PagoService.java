@@ -33,17 +33,11 @@ public class PagoService {
 		return new ResponseEntity<Pago>(HttpStatus.OK);
 	}
 	
-	public ResponseEntity<Pago> delete(Pago pago) {
-		pagoImpl.delete(pago.getPag_id());
+	public ResponseEntity<Pago> delete(int pag_id) {
+		pagoImpl.delete(pag_id);
 		return new ResponseEntity<Pago>(HttpStatus.OK);
 	}
 	
-//    public ResponseEntity<ClienteSimpleDto> findClienteSimple(String cli_dni) {
-//		
-//		Pago cliente = pagoImpl.findCliente(cli_dni);
-//		String nombreCompleto = cliente.getCli_nombre() + " " + cliente.getCli_apellido();
-//		
-//		return new ResponseEntity<>(new ClienteSimpleDto(cliente.getCli_dni(), nombreCompleto, cliente.getCli_email(), cliente.getCli_ciudad()), HttpStatus.OK);
-//    }
+
 	
 }

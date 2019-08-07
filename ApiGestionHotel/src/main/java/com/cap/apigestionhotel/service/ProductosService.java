@@ -6,12 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import com.cap.apigestionhotel.dao.entity.Clientes;
+
 import com.cap.apigestionhotel.dao.entity.Productos;
-import com.cap.apigestionhotel.dto.ClienteSimpleDto;
 import com.cap.apigestionhotel.impl.ProductosImpl;
 
 @Service
@@ -44,13 +41,5 @@ public class ProductosService {
 	}
 	
 
-	
-//    public ResponseEntity<ClienteSimpleDto> findClienteSimple(String cli_dni) {
-//		
-//		Productos cliente = productosImpl.findProductos(cli_dni);
-//		String nombreCompleto = cliente.getCli_nombre() + " " + cliente.getCli_apellido();
-//		
-//		return new ResponseEntity<>(new ClienteSimpleDto(cliente.getCli_dni(), nombreCompleto, cliente.getCli_email(), cliente.getCli_ciudad()), HttpStatus.OK);
-//    }
 	
 }
