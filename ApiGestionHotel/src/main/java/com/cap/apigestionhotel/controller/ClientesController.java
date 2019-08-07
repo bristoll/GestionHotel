@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.apigestionhotel.dao.entity.Clientes;
+import com.cap.apigestionhotel.dto.ClienteSimpleDto;
 import com.cap.apigestionhotel.impl.ClientesImpl;
+import com.cap.apigestionhotel.service.ClientesService;
 
 
 @RestController
@@ -23,34 +25,35 @@ import com.cap.apigestionhotel.impl.ClientesImpl;
 public class ClientesController {
 
 	@Autowired
-	ClientesImpl clientesImpl;
+	ClientesService clientesService;
 	
 	@GetMapping("/clientes")
     public ResponseEntity<List<Clientes>> findAll() {
-		return new ResponseEntity<>(clientesImpl.findAll(), HttpStatus.OK);
+		return clientesService.findAll();
     }
 	
-	//Para obtener cliente especifico mediante Id
 	@GetMapping("/clientes/{cli_dni}")
     public ResponseEntity<Clientes> findCliente(@PathVariable String cli_dni) {
-		return new ResponseEntity<>(clientesImpl.findCliente(cli_dni), HttpStatus.OK);
+		return clientesService.findCliente(cli_dni);
     }
 	@PostMapping("/clientes")
     public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {        
-        clientesImpl.insert(cliente);
-        return new ResponseEntity<Clientes>(HttpStatus.CREATED);//La cadena es opcional
+        return clientesService.insert(cliente);
     }
 	
 	@PutMapping("/clientes/{idClientes}")
-	public ResponseEntity<Clientes> update(@ModelAttribute Clientes cliente) {//No se si es correcto meterle el nombre aqui ya que no aparece en la uri
-		clientesImpl.update(cliente);
-		return new ResponseEntity<Clientes>(HttpStatus.OK);
+	public ResponseEntity<Clientes> update(@ModelAttribute Clientes cliente) {
+		return clientesService.update(cliente);
 	}
 	
 	@DeleteMapping("/clientes/{idClientes}")
 	public ResponseEntity<Clientes> delete(@ModelAttribute Clientes cliente) {
-		clientesImpl.delete(cliente.getCli_dni());
-		return new ResponseEntity<Clientes>(HttpStatus.OK);
+		return clientesService.delete(cliente);
 	}
+	
+	@GetMapping("/clientes/simple/{cli_dni}")
+    public ResponseEntity<ClienteSimpleDto> findClienteSimple(@PathVariable String cli_dni) {				
+		return clientesService.findClienteSimple(cli_dni);
+    }
 	
 }

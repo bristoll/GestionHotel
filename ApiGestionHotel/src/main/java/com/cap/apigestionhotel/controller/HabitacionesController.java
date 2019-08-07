@@ -27,12 +27,12 @@ public class HabitacionesController {
 	
 	@GetMapping("/habitaciones")
     public ResponseEntity<List<Habitaciones>> findAll() {
-		return new ResponseEntity<>(habitacionesImpl.findAll(), HttpStatus.OK);
+		return new ResponseEntity<List<Habitaciones>>(habitacionesImpl.findAll(), HttpStatus.OK);
     }
 	
 	@GetMapping("/habitaciones/{Ha_id}")
     public ResponseEntity<Habitaciones> findHabitacion(@PathVariable int ha_id) {
-		return new ResponseEntity<>(habitacionesImpl.findHabitaciones(ha_id), HttpStatus.OK);
+		return new ResponseEntity<Habitaciones>(habitacionesImpl.findHabitaciones(ha_id), HttpStatus.OK);
     }
 	
 	@PostMapping("/habitaciones")

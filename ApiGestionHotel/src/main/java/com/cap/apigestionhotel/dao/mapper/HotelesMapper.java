@@ -20,8 +20,7 @@ public interface HotelesMapper {
 	@Select("SELECT * FROM hoteles where ho_id = #{ho_id}")
 	Hoteles findHotel(int ho_id);
 	
-	@Insert("INSERT INTO hoteles (ho_id, ho_nombre, ho_categoria, ho_zona, ho_direccion) "
-			+ "VALUES (#{ho_id}, #{ho_nombre}, #{ho_categoria}, #{ho_zona}, #{ho_direccion}")
+	@Insert("INSERT INTO hoteles (ho_id, ho_nombre, ho_categoria, ho_zona, ho_direccion) VALUES (#{ho_id}, #{ho_nombre}, #{ho_categoria}, #{ho_zona}, #{ho_direccion})")
     void insert(Hoteles hotel);
 	
 	@Update("UPDATE hoteles SET ho_nombre = #{ho_nombre}, ho_categoria = #{ho_categoria}, ho_zona = #{ho_zona}, ho_direccion = #{ho_direccion} where ho_id=#{ho_id}")
