@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,7 +38,7 @@ public class ClientesController {
 		return clientesService.findCliente(cli_dni);
     }
 	@PostMapping("/clientes")
-    public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {        
+    public ResponseEntity<Clientes> insert(@RequestBody Clientes cliente) {        
         return clientesService.insert(cliente);
     }
 	
@@ -47,8 +48,8 @@ public class ClientesController {
 	}
 	
 	@DeleteMapping("/clientes/{idClientes}")
-	public ResponseEntity<Clientes> delete(@ModelAttribute Clientes cliente) {
-		return clientesService.delete(cliente);
+	public ResponseEntity<Clientes> delete(@PathVariable String cli_dni) {
+		return clientesService.delete(cli_dni);
 	}
 	
 	@GetMapping("/clientes/simple/{cli_dni}")

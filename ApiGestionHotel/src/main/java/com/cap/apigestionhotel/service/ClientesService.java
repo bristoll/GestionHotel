@@ -37,8 +37,8 @@ public class ClientesService {
 		return new ResponseEntity<Clientes>(HttpStatus.OK);
 	}
 	
-	public ResponseEntity<Clientes> delete(Clientes cliente) {
-		clientesImpl.delete(cliente.getCli_dni());
+	public ResponseEntity<Clientes> delete(String cli_dni) {
+		clientesImpl.delete(cli_dni);
 		return new ResponseEntity<Clientes>(HttpStatus.OK);
 	}
 	
