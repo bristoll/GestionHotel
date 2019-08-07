@@ -21,41 +21,42 @@ import com.cap.apigestionhotel.dao.entity.Hoteles;
 import com.cap.apigestionhotel.dao.entity.Pago;
 import com.cap.apigestionhotel.impl.HotelesImpl;
 import com.cap.apigestionhotel.impl.PagoImpl;
+import com.cap.apigestionhotel.service.PagoService;
 
 @RestController
 @RequestMapping("/rest")
 public class PagoController {
 
 	@Autowired
-	PagoImpl pagoImpl;
+	PagoService pagoService;
 	
 	@GetMapping("/pago")
     public ResponseEntity<List<Pago>> findAll() {
-		return new ResponseEntity<>(pagoImpl.findAll(), HttpStatus.OK);
+		return pagoService.findAll();
     }
 	
 	//Para obtener un pago especifico mediante Id
 		@GetMapping("/pago/{pag_id}")
 	    public ResponseEntity<Pago> findPago(@PathVariable int pag_id) {
-			return new ResponseEntity<Pago>(pagoImpl.findPago(pag_id), HttpStatus.OK);
+			return pagoService.findPago(pag_id);
 	    }
 		
 		
 		@PostMapping("/pago")
 	    public ResponseEntity<Pago> insert(@ModelAttribute Pago pago) {
-	        pagoImpl.insert(pago);
+			pagoService.insert(pago);
 	        return new ResponseEntity<Pago>(HttpStatus.CREATED);//La cadena es opcional
 	    }
 		
 		@PutMapping("/pago/{pag_id}")
 		public ResponseEntity<Pago> update(@ModelAttribute Pago pago) {
-			pagoImpl.update(pago);
+			pagoService.update(pago);
 			return new ResponseEntity<Pago>(HttpStatus.OK);
 		}
 		
 		@DeleteMapping("/pago/{pag_id}")
-		public ResponseEntity<Pago> delete(@ModelAttribute Pago pago) {
-			pagoImpl.delete(pago.getPag_id());
+		public ResponseEntity<Pago> delete(@ModelAttribute int pag_id) {
+			pagoService.delete(pag_id);
 			return new ResponseEntity<Pago>(HttpStatus.OK);
 		}
 	
