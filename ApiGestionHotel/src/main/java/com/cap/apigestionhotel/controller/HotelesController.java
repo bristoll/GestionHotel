@@ -22,35 +22,6 @@ import com.cap.apigestionhotel.service.HotelesService;
 @RequestMapping("/rest")
 public class HotelesController {
 
-//	@Autowired
-//	HotelesImpl hotelesImpl;
-//	
-//	@GetMapping("/hoteles")
-//    public ResponseEntity<List<Hoteles>> findAll() {
-//		return new ResponseEntity<>(hotelesImpl.findAll(), HttpStatus.OK);
-//    }
-//	@GetMapping("/hoteles/{ho_id}")
-//    public ResponseEntity<Hoteles> findCliente(@PathVariable int ho_id) {
-//		return new ResponseEntity<>(hotelesImpl.findHotel(ho_id), HttpStatus.OK);
-//    }
-//	@PostMapping("/hoteles")
-//    public ResponseEntity<Hoteles> insert(@ModelAttribute Hoteles hotel) {        
-//        hotelesImpl.insert(hotel);
-//        return new ResponseEntity<Hoteles>(HttpStatus.CREATED);//La cadena es opcional
-//    }
-//	
-//	@PutMapping("/hoteles/{ho_id}")
-//	public ResponseEntity<Hoteles> update(@ModelAttribute Hoteles hotel) {//No se si es correcto meterle el nombre aqui ya que no aparece en la uri
-//		hotelesImpl.update(hotel);
-//		return new ResponseEntity<Hoteles>(HttpStatus.OK);
-//	}
-//	
-//	@DeleteMapping("/hoteles/{ho_id}")
-//	public ResponseEntity<Hoteles> delete(@ModelAttribute Hoteles hotel) {
-//		hotelesImpl.delete(hotel.getHo_id());
-//		return new ResponseEntity<Hoteles>(HttpStatus.OK);
-//	}
-
 	@Autowired
 	HotelesService hotelesService;
 
