@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.apigestionhotel.dao.entity.Reservas;
 import com.cap.apigestionhotel.impl.ReservasImpl;
+import com.cap.apigestionhotel.service.ReservasService;
 
 
 
@@ -24,34 +25,34 @@ import com.cap.apigestionhotel.impl.ReservasImpl;
 public class ReservasController {
 
 	@Autowired
-	ReservasImpl reservasImpl;
+	ReservasService reservasService;
 	
 	@GetMapping("/reservas")
     public ResponseEntity<List<Reservas>> findAll() {
-		return new ResponseEntity<>(reservasImpl.findAll(), HttpStatus.OK);
+		return reservasService.findAll();
     }
 	
 
 	
 	@GetMapping("/reservas/{re_id}")
     public ResponseEntity<Reservas> findCliente(@PathVariable int re_id) {
-		return new ResponseEntity<>(reservasImpl.findReserva(re_id), HttpStatus.OK);
+		return reservasService.findReserva(re_id);
     }
 	@PostMapping("/reservas")
     public ResponseEntity<Reservas> insert(@ModelAttribute Reservas reserva) {        
-        reservasImpl.insert(reserva);
-        return new ResponseEntity<Reservas>(HttpStatus.CREATED);//La cadena es opcional
+        
+        return reservasService.insert(reserva);
     }
 	
 	@PutMapping("/reservas/{re_id}")
 	public ResponseEntity<Reservas> update(@ModelAttribute Reservas reserva) {//No se si es correcto meterle el nombre aqui ya que no aparece en la uri
-		reservasImpl.update(reserva);
-		return new ResponseEntity<Reservas>(HttpStatus.OK);
+		
+		return reservasService.update(reserva);
 	}
 	
 	@DeleteMapping("/reservas/{re_id}")
-	public ResponseEntity<Reservas> delete(@ModelAttribute com.cap.apigestionhotel.dao.entity.Reservas reserva) {
-		reservasImpl.delete(reserva.getRe_id());
-		return new ResponseEntity<Reservas>(HttpStatus.OK);
+	public ResponseEntity<Reservas> delete(@PathVariable int re_id) {
+	
+		return reservasService.delete(re_id);
 	}
 }
