@@ -14,11 +14,11 @@ public interface ProductosMapper {
 	
 	@Select("SELECT * FROM productos")
 	List<Productos> findAll();
-
-	@Select("SELECT * FROM productos where pro_id = #{pro_id}")
-	void insert(Productos producto);
 	
 	@Insert("INSERT INTO productos (pro_id, pro_nombre, pro_unidad_medida, pro_precio_venta) VALUES (#{pro_id}, #{pro_nombre}, #{pro_unidad_medida}, #{pro_precio_venta})")
+	void insert(Productos producto);
+	
+	@Select("SELECT * FROM productos where pro_id = #{pro_id}")
 	Productos findProductos(int pro_id);
 
 	@Update("UPDATE productos SET pro_nombre = #{pro_nombre}, pro_unidad_medida = #{pro_unidad_medida},pro_precio_venta = #{pro_precio_venta} = where pro_id=#{pro_id}")
