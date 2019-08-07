@@ -38,7 +38,7 @@ public class ClientesController {
 		return clientesService.findCliente(cli_dni);
     }
 	@PostMapping("/clientes")
-    public ResponseEntity<Clientes> insert(@RequestBody Clientes cliente) {        
+    public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {        
         return clientesService.insert(cliente);
     }
 	
