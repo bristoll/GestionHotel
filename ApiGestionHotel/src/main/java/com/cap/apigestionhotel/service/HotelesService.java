@@ -36,8 +36,8 @@ public class HotelesService {
 		return new ResponseEntity<Hoteles>(HttpStatus.OK);
 	}
 	
-	public ResponseEntity<Hoteles> delete(Hoteles hotel) {
-		hotelesImpl.delete(hotel.getHo_id());
+	public ResponseEntity<Hoteles> delete(int ho_id) {
+		hotelesImpl.delete(ho_id);
 		return new ResponseEntity<Hoteles>(HttpStatus.OK);
 	}
 	

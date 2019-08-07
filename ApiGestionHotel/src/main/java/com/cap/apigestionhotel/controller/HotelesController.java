@@ -75,8 +75,8 @@ public class HotelesController {
 	}
 
 	@DeleteMapping("/hoteles/{ho_id}")
-	public ResponseEntity<Hoteles> delete(@ModelAttribute Hoteles hotel) {
-		return hotelesService.delete(hotel);
+	public ResponseEntity<Hoteles> delete(@PathVariable int ho_id) {
+		return hotelesService.delete(ho_id);
 	}
 
 }
