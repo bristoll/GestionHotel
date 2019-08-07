@@ -17,44 +17,40 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cap.apigestionhotel.dao.entity.Clientes;
 import com.cap.apigestionhotel.dao.entity.Pago;
 import com.cap.apigestionhotel.dao.entity.Productos;
-import com.cap.apigestionhotel.impl.ProductosImpl;
+import com.cap.apigestionhotel.service.ProductosService;
 
 @RestController
 @RequestMapping("/rest")
 public class ProductosController {
 
 	@Autowired
-	ProductosImpl productosImpl;
+	ProductosService productosService;
 	
 	@GetMapping("/productos")
     public ResponseEntity<List<Productos>> findAll() {
-		return new ResponseEntity<>(productosImpl.findAll(), HttpStatus.OK);
+		return productosService.findAll();
     }
 	
 	
-	//Para obtener un producto especifico mediante Id
 	@GetMapping("/productos/{pro_id}")
     public ResponseEntity<Productos> findProductos(@PathVariable int pro_id) {
-		return new ResponseEntity<Productos>(productosImpl.findProductos(pro_id), HttpStatus.OK);
+		return productosService.findProductos(pro_id);
     }
 	
 	
 	@PostMapping("/productos")
-    public ResponseEntity<Productos> insert(@ModelAttribute Productos producto) {        
-        productosImpl.insert(producto);
-        return new ResponseEntity<Productos>(HttpStatus.CREATED);//La cadena es opcional
+    public ResponseEntity<Productos> insert(@ModelAttribute Productos producto) {             
+        return  productosService.insert(producto);
     }
 	
 	@PutMapping("/productos/{pro_id}")
-	public ResponseEntity<Productos> update(@ModelAttribute Productos producto) {
-		productosImpl.update(producto);
-		return new ResponseEntity<Productos>(HttpStatus.OK);
+	public ResponseEntity<Productos> update(@ModelAttribute Productos producto) {	
+		return productosService.update(producto);
 	}
 	
 	@DeleteMapping("/productos/{pro_id}")
-	public ResponseEntity<Productos> delete(@ModelAttribute Productos producto) {
-		productosImpl.delete(producto.getPro_id());
-		return new ResponseEntity<Productos>(HttpStatus.OK);
+	public ResponseEntity<Productos> delete(@PathVariable int pro_id) {
+		return productosService.delete(pro_id);
 	}
-	
+
 }
