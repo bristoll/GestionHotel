@@ -23,7 +23,7 @@ public class HabitacionesImpl implements HabitacionesDao {
 	}
 
 	@Override
-	public Habitaciones findHabitaciones(int ha_id) {
+	public Habitaciones findHabitacion(int ha_id) {
 		return habitacionesMapper.findHabitacion(ha_id);
 	}
 

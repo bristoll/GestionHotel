@@ -17,39 +17,38 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cap.apigestionhotel.dao.entity.Clientes;
 import com.cap.apigestionhotel.dao.entity.Habitaciones;
 import com.cap.apigestionhotel.impl.HabitacionesImpl;
+import com.cap.apigestionhotel.service.HabitacionesService;
 
 @RestController
 @RequestMapping("/rest")
 public class HabitacionesController {
 
 	@Autowired
-	HabitacionesImpl habitacionesImpl;
+	HabitacionesService habitacionesService;
 	
 	@GetMapping("/habitaciones")
     public ResponseEntity<List<Habitaciones>> findAll() {
-		return new ResponseEntity<List<Habitaciones>>(habitacionesImpl.findAll(), HttpStatus.OK);
+		return habitacionesService.findAll();
     }
 	
-	@GetMapping("/habitaciones/{Ha_id}")
+	@GetMapping("/habitaciones/{ha_id}")
     public ResponseEntity<Habitaciones> findHabitacion(@PathVariable int ha_id) {
-		return new ResponseEntity<Habitaciones>(habitacionesImpl.findHabitaciones(ha_id), HttpStatus.OK);
+		return habitacionesService.findHabitacion(ha_id);
     }
 	
 	@PostMapping("/habitaciones")
     public ResponseEntity<Habitaciones> insert(@ModelAttribute Habitaciones habitacione) {        
-		habitacionesImpl.insert(habitacione);
-        return new ResponseEntity<Habitaciones>(HttpStatus.CREATED);
+        return habitacionesService.insert(habitacione);
     }
 	
-	@PutMapping("/habitaciones/{Ha_id}")
+	@PutMapping("/habitaciones/{ha_id}")
 	public ResponseEntity<Habitaciones> update(@ModelAttribute Habitaciones habitacion) {
-		habitacionesImpl.update(habitacion);
-		return new ResponseEntity<Habitaciones>(HttpStatus.OK);
+		return habitacionesService.update(habitacion);
 	}
 	
-	@DeleteMapping("/habitaciones/{Ha_id}")
-	public ResponseEntity<Habitaciones> delete(@ModelAttribute Habitaciones habitacion) {
-		habitacionesImpl.delete(habitacion.getHa_id());
-		return new ResponseEntity<Habitaciones>(HttpStatus.OK);
+	@DeleteMapping("/habitaciones/{ha_id}")
+	public ResponseEntity<Habitaciones> delete(@PathVariable int ha_id) {
+		return habitacionesService.delete(ha_id);
 	}
+	
 }
