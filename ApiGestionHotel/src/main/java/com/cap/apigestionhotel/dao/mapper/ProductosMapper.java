@@ -15,7 +15,7 @@ public interface ProductosMapper {
 	@Select("SELECT * FROM productos")
 	List<Productos> findAll();
 	
-	@Insert("INSERT INTO productos (pro_nombre, pro_unidad_medida, pro_precio_venta) VALUES (#{pro_nombre}, #{pro_unidad_medida}, #{pro_precio_venta})")
+	@Insert("INSERT INTO productos (pro_id, pro_nombre, pro_unidad_medida, pro_precio_venta) VALUES (#{pro_id}, #{pro_nombre}, #{pro_unidad_medida}, #{pro_precio_venta})")
 	void insert(Productos producto);
 	
 	@Select("SELECT * FROM productos where pro_id = #{pro_id}")

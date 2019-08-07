@@ -55,7 +55,7 @@ public class PagoController {
 		}
 		
 		@DeleteMapping("/pago/{pag_id}")
-		public ResponseEntity<Pago> delete(@ModelAttribute int pag_id) {
+		public ResponseEntity<Pago> delete(@PathVariable int pag_id) {
 			pagoService.delete(pag_id);
 			return new ResponseEntity<Pago>(HttpStatus.OK);
 		}
