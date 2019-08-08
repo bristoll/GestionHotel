@@ -10,16 +10,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.cap.gestionhotel.model.Clientes;
-import com.cap.gestionhotel.repository.ClientesRepo;
 
 @Service
 public class ClientesService {
-
+	
 	@Autowired
-	ClientesRepo clientesRepo;
+	RestTemplate restTemplate;
 	
 	public List<Clientes> listaClientes() {
-		return clientesRepo.listaClientes();
+		ResponseEntity<List<Clientes>> responseEntity = restTemplate.exchange("http://localhost:8086/rest/clientes", HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<Clientes>>() {
+				});
+		return responseEntity.getBody();
 	}
 
 }
