@@ -19,6 +19,10 @@ public class ClientesService {
 	@Autowired
 	ClientesImpl clientesImpl;
 	
+	 public Clientes login(String cli_email) {
+		return  clientesImpl.login(cli_email);
+   }
+	
 	public ResponseEntity<List<Clientes>> findAll() {
 		return new ResponseEntity<>(clientesImpl.findAll(), HttpStatus.OK);
     }
@@ -37,8 +41,8 @@ public class ClientesService {
 		return new ResponseEntity<Clientes>(HttpStatus.OK);
 	}
 	
-	public ResponseEntity<Clientes> delete(Clientes cliente) {
-		clientesImpl.delete(cliente.getCli_dni());
+	public ResponseEntity<Clientes> delete(String cli_dni) {
+		clientesImpl.delete(cli_dni);
 		return new ResponseEntity<Clientes>(HttpStatus.OK);
 	}
 	

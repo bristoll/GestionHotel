@@ -29,17 +29,17 @@ public class ConsumoController {
 		return new ResponseEntity<>(consumoImpl.findAll(), HttpStatus.OK);
     }
 	@GetMapping("/consumo/{con_id}")
-    public ResponseEntity<Consumo> findCliente(@PathVariable int con_id) {
+    public ResponseEntity<Consumo> findConsumo(@PathVariable int con_id) {
 		return new ResponseEntity<>(consumoImpl.findConsumo(con_id), HttpStatus.OK);
     }
 	@PostMapping("/consumo")
     public ResponseEntity<Consumo> insert(@ModelAttribute Consumo consumo) {        
         consumoImpl.insert(consumo);
-        return new ResponseEntity<Consumo>(HttpStatus.CREATED);//La cadena es opcional
+        return new ResponseEntity<Consumo>(HttpStatus.CREATED);
     }
 	
 	@PutMapping("/consumo/{con_id}")
-	public ResponseEntity<Consumo> update(@ModelAttribute Consumo consumo) {//No se si es correcto meterle el nombre aqui ya que no aparece en la uri
+	public ResponseEntity<Consumo> update(@ModelAttribute Consumo consumo) {
 		consumoImpl.update(consumo);
 		return new ResponseEntity<Consumo>(HttpStatus.OK);
 	}
