@@ -29,9 +29,20 @@ public class ClientesController {
 	@Autowired
 	ClientesService clientesService;
 	
-	@PostMapping("/clientes/{cli_email}")
-    public ResponseEntity<Clientes> login(@PathVariable String cli_email) {
-		return clientesService.login(cli_email);
+	@PostMapping("/clientes/login")
+    public ResponseEntity<ClienteSimpleDto> login(@RequestParam String cli_email,@RequestParam String password ) {
+		Clientes cliente = clientesService.login(cli_email);
+		boolean isValid=false;
+		if(cliente.getPassword().equals(password)){
+			isValid=true;	
+			ClienteSimpleDto clienteSimpleDto= new ClienteSimpleDto(cliente.getCli_dni(),
+					cliente.getCli_nombre()+" "+cliente.getCli_apellido(),
+					cliente.getCli_email(),
+					cliente.getCli_ciudad());
+			return new ResponseEntity<ClienteSimpleDto> (clienteSimpleDto, HttpStatus.OK);
+		}
+		return new ResponseEntity<> (HttpStatus.BAD_REQUEST);
+		
     }
 	
 	
