@@ -18,6 +18,12 @@ public class ClientesImpl implements ClientesDao {
 	}
 
 	@Override
+	public Clientes login(String cli_email) {		
+		return clientesMapper.login(cli_email);
+	}
+	
+	
+	@Override
 	public List<Clientes> findAll() {		
 		return clientesMapper.findAll();
 	}

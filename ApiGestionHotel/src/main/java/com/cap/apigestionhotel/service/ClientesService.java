@@ -19,6 +19,10 @@ public class ClientesService {
 	@Autowired
 	ClientesImpl clientesImpl;
 	
+	 public Clientes login(String cli_email) {
+		return  clientesImpl.login(cli_email);
+   }
+	
 	public ResponseEntity<List<Clientes>> findAll() {
 		return new ResponseEntity<>(clientesImpl.findAll(), HttpStatus.OK);
     }

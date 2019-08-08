@@ -13,6 +13,9 @@ import com.cap.apigestionhotel.dao.entity.Clientes;
 @Mapper
 public interface ClientesMapper {
 
+	@Select("SELECT * FROM clientes where cli_email = #{cli_email}")
+	Clientes login(String cli_email);
+	
 	@Select("SELECT * FROM clientes")
 	List<Clientes> findAll();
 	
