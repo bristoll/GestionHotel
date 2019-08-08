@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.apigestionhotel.dao.entity.Clientes;
@@ -28,6 +29,23 @@ public class ClientesController {
 	@Autowired
 	ClientesService clientesService;
 	
+	@PostMapping("/clientes/login")
+    public ResponseEntity<ClienteSimpleDto> login(@RequestParam String cli_email,@RequestParam String password ) {
+		Clientes cliente = clientesService.login(cli_email);
+		boolean isValid=false;
+		if(cliente.getPassword().equals(password)){
+			isValid=true;	
+			ClienteSimpleDto clienteSimpleDto= new ClienteSimpleDto(cliente.getCli_dni(),
+					cliente.getCli_nombre()+" "+cliente.getCli_apellido(),
+					cliente.getCli_email(),
+					cliente.getCli_ciudad());
+			return new ResponseEntity<ClienteSimpleDto> (clienteSimpleDto, HttpStatus.OK);
+		}
+		return new ResponseEntity<> (HttpStatus.BAD_REQUEST);
+		
+    }
+	
+	
 	@GetMapping("/clientes")
     public ResponseEntity<List<Clientes>> findAll() {
 		return clientesService.findAll();
@@ -37,6 +55,8 @@ public class ClientesController {
     public ResponseEntity<Clientes> findCliente(@PathVariable String cli_dni) {
 		return clientesService.findCliente(cli_dni);
     }
+	
+	
 	@PostMapping("/clientes")
     public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {        
         return clientesService.insert(cliente);
