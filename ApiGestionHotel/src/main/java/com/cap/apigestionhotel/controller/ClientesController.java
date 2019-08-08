@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.apigestionhotel.dao.entity.Clientes;
@@ -27,6 +29,12 @@ public class ClientesController {
 	@Autowired
 	ClientesService clientesService;
 	
+	@PostMapping("/clientes/{cli_email}")
+    public ResponseEntity<Clientes> login(@PathVariable String cli_email) {
+		return clientesService.login(cli_email);
+    }
+	
+	
 	@GetMapping("/clientes")
     public ResponseEntity<List<Clientes>> findAll() {
 		return clientesService.findAll();
@@ -36,6 +44,8 @@ public class ClientesController {
     public ResponseEntity<Clientes> findCliente(@PathVariable String cli_dni) {
 		return clientesService.findCliente(cli_dni);
     }
+	
+	
 	@PostMapping("/clientes")
     public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {        
         return clientesService.insert(cliente);
