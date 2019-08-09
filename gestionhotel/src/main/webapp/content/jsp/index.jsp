@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,18 +16,7 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">GestHotel</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="http://localhost:8080">Home</a></li>
-				<li><a href="http://localhost:8080/clientes/lista">Clientes</a></li>
-			</ul>
-		</div>
-	</nav>
-
+<jsp:include page="nav.jsp" />
 
 	<div class="container">
 		<div id="carouselHoteles" class="carousel slide" data-ride="carousel">
