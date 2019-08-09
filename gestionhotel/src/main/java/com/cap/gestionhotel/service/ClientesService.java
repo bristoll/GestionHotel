@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.cap.gestionhotel.model.Clientes;
 
+
 @Service
 public class ClientesService {
 	
