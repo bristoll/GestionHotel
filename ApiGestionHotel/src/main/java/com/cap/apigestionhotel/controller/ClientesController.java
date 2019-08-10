@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.apigestionhotel.dao.entity.Clientes;
+import com.cap.apigestionhotel.dto.ClienteLoginDto;
 import com.cap.apigestionhotel.dto.ClienteSimpleDto;
 import com.cap.apigestionhotel.impl.ClientesImpl;
 import com.cap.apigestionhotel.service.ClientesService;
@@ -30,16 +31,17 @@ public class ClientesController {
 	ClientesService clientesService;
 	
 	@PostMapping("/clientes/login")
-    public ResponseEntity<ClienteSimpleDto> login(@RequestParam String cli_email,@RequestParam String password ) {
-		Clientes cliente = clientesService.login(cli_email);
+    public ResponseEntity<HttpStatus> login(@ModelAttribute ClienteLoginDto clienteLoginDto) {
+		Clientes cliente = clientesService.login(clienteLoginDto.getEmail());
+		;
 		boolean isValid=false;
-		if(cliente.getPassword().equals(password)){
+		if(cliente.getPassword().equals(clienteLoginDto.getPass())){
 			isValid=true;	
 			ClienteSimpleDto clienteSimpleDto= new ClienteSimpleDto(cliente.getCli_dni(),
 					cliente.getCli_nombre()+" "+cliente.getCli_apellido(),
 					cliente.getCli_email(),
 					cliente.getCli_ciudad());
-			return new ResponseEntity<ClienteSimpleDto> (clienteSimpleDto, HttpStatus.OK);
+			return new ResponseEntity<> (HttpStatus.OK);
 		}
 		return new ResponseEntity<> (HttpStatus.BAD_REQUEST);
 		

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -27,14 +28,17 @@ public class ClientesService {
 		return responseEntity.getBody();
 	}
 
-	public ResponseEntity<ClienteSimpleDto> login(ClienteLoginDto clienteLoginDto) {
+	public ResponseEntity<HttpStatus> login(ClienteLoginDto clienteLoginDto) {
 
-		HttpEntity<ClienteLoginDto> entity = new HttpEntity<ClienteLoginDto>(clienteLoginDto);
+		//HttpEntity<ClienteLoginDto> entity = new HttpEntity<ClienteLoginDto>(clienteLoginDto);
 
-		ResponseEntity<ClienteSimpleDto> responseEntity = restTemplate.exchange(
-				"http://localhost:8086/rest/clientes/login", HttpMethod.POST, entity,
-				new ParameterizedTypeReference<ClienteSimpleDto>() {
-				});
+//		ResponseEntity<ClienteSimpleDto> responseEntity = restTemplate.exchange(
+//				"http://localhost:8086/rest/clientes/login", HttpMethod.POST, entity,
+//				new ParameterizedTypeReference<ClienteSimpleDto>() {
+//				});
+		
+		ResponseEntity<HttpStatus> responseEntity = restTemplate.postForObject("http://localhost:8086/rest/clientes/login",
+				 clienteLoginDto, ResponseEntity.class);
 
 		return responseEntity;
 	}

@@ -5,6 +5,14 @@ public class ClienteLoginDto {
 	private String email;
 	private String pass;
 	
+	private static final ClienteLoginDto INSTANCE = new ClienteLoginDto();
+	
+	private ClienteLoginDto() {}
+	
+	public static ClienteLoginDto getInstance() {
+        return INSTANCE;
+    }
+	
 	public String getEmail() {
 		return email;
 	}

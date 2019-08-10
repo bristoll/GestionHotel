@@ -11,8 +11,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.client.RestTemplate;
 
+import com.cap.gestionhotel.model.ClienteLoginDto;
+
 @Configuration
 @ComponentScan(basePackages = "com.cap.gestionhotel")
+@ComponentScan(basePackages = "com.cap.gestionhotel.hotel")
 @Import({BeanConfig.class, WebConfig.class})
 @EnableAutoConfiguration
 public class Application extends SpringBootServletInitializer{
@@ -32,5 +35,10 @@ public class Application extends SpringBootServletInitializer{
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
 	}
+	
+	@Bean
+    public ClienteLoginDto clienteLoginDto() {
+        return ClienteLoginDto.getInstance();
+    }
 
 }
