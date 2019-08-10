@@ -7,6 +7,8 @@ public class ClienteSimpleDto {
 	private String email;
 	private String ciudad;
 	
+	public ClienteSimpleDto() {}
+	
 	public ClienteSimpleDto(String dni, String nombreCompleto, String email, String ciudad) {
 		this.dni = dni;
 		this.nombreCompleto = nombreCompleto;

@@ -32,16 +32,19 @@ public class ClientesController {
 	@PostMapping("/clientes/login")
 	public ResponseEntity<ClienteSimpleDto> login(@RequestBody ClienteLoginDto clienteLoginDto) {
 		Clientes cliente = clientesService.login(clienteLoginDto.getEmail());
-		;
+
 		boolean isValid = false;
-		if (cliente.getPassword().equals(clienteLoginDto.getPass())) {
-			isValid = true;
-			ClienteSimpleDto clienteSimpleDto = new ClienteSimpleDto(cliente.getCli_dni(),
-					cliente.getCli_nombre() + " " + cliente.getCli_apellido(), cliente.getCli_email(),
-					cliente.getCli_ciudad());
-			return new ResponseEntity<>(clienteSimpleDto, HttpStatus.OK);
+		if (cliente != null) {
+			if (cliente.getPassword().equals(clienteLoginDto.getPass())) {
+				isValid = true;
+				ClienteSimpleDto clienteSimpleDto = new ClienteSimpleDto(cliente.getCli_dni(),
+						cliente.getCli_nombre() + " " + cliente.getCli_apellido(), cliente.getCli_email(),
+						cliente.getCli_ciudad());
+				return new ResponseEntity<>(clienteSimpleDto, HttpStatus.OK);
+			}
 		}
-		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		
+		return new ResponseEntity<>(new ClienteSimpleDto(), HttpStatus.RESET_CONTENT);
 
 	}
 
