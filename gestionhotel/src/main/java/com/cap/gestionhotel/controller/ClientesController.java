@@ -50,10 +50,10 @@ public class ClientesController {
 		clienteLoginDto.setEmail(datos.get("email"));
 		clienteLoginDto.setPass(datos.get("pass"));
 		
-		ResponseEntity<HttpStatus> response = clientesService.login(clienteLoginDto);
+		ResponseEntity<ClienteSimpleDto> response = clientesService.login(clienteLoginDto);
 		
 		if (response.getStatusCode().equals(HttpStatus.OK)) {
-			//modelAndView.addObject("clienteLogin", response.getBody());
+			modelAndView.addObject("clienteLogin", response.getBody());
 			modelAndView.setViewName("listaClientes");
 		}else {
 			modelAndView.setViewName("index");

@@ -28,7 +28,7 @@ public class ClientesService {
 		return responseEntity.getBody();
 	}
 
-	public ResponseEntity<HttpStatus> login(ClienteLoginDto clienteLoginDto) {
+	public ResponseEntity<ClienteSimpleDto> login(ClienteLoginDto clienteLoginDto) {
 
 		//HttpEntity<ClienteLoginDto> entity = new HttpEntity<ClienteLoginDto>(clienteLoginDto);
 
@@ -37,8 +37,9 @@ public class ClientesService {
 //				new ParameterizedTypeReference<ClienteSimpleDto>() {
 //				});
 		
-		ResponseEntity<HttpStatus> responseEntity = restTemplate.postForObject("http://localhost:8086/rest/clientes/login",
-				 clienteLoginDto, ResponseEntity.class);
+		ResponseEntity<ClienteSimpleDto> responseEntity = restTemplate.postForEntity("http://localhost:8086/rest/clientes/login",
+				clienteLoginDto, ClienteSimpleDto.class);
+		
 
 		return responseEntity;
 	}

@@ -22,61 +22,57 @@ import com.cap.apigestionhotel.dto.ClienteSimpleDto;
 import com.cap.apigestionhotel.impl.ClientesImpl;
 import com.cap.apigestionhotel.service.ClientesService;
 
-
 @RestController
 @RequestMapping("/rest")
 public class ClientesController {
 
 	@Autowired
 	ClientesService clientesService;
-	
+
 	@PostMapping("/clientes/login")
-    public ResponseEntity<HttpStatus> login(@ModelAttribute ClienteLoginDto clienteLoginDto) {
+	public ResponseEntity<ClienteSimpleDto> login(@RequestBody ClienteLoginDto clienteLoginDto) {
 		Clientes cliente = clientesService.login(clienteLoginDto.getEmail());
 		;
-		boolean isValid=false;
-		if(cliente.getPassword().equals(clienteLoginDto.getPass())){
-			isValid=true;	
-			ClienteSimpleDto clienteSimpleDto= new ClienteSimpleDto(cliente.getCli_dni(),
-					cliente.getCli_nombre()+" "+cliente.getCli_apellido(),
-					cliente.getCli_email(),
+		boolean isValid = false;
+		if (cliente.getPassword().equals(clienteLoginDto.getPass())) {
+			isValid = true;
+			ClienteSimpleDto clienteSimpleDto = new ClienteSimpleDto(cliente.getCli_dni(),
+					cliente.getCli_nombre() + " " + cliente.getCli_apellido(), cliente.getCli_email(),
 					cliente.getCli_ciudad());
-			return new ResponseEntity<> (HttpStatus.OK);
+			return new ResponseEntity<>(clienteSimpleDto, HttpStatus.OK);
 		}
-		return new ResponseEntity<> (HttpStatus.BAD_REQUEST);
-		
-    }
-	
-	
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+	}
+
 	@GetMapping("/clientes")
-    public ResponseEntity<List<Clientes>> findAll() {
+	public ResponseEntity<List<Clientes>> findAll() {
 		return clientesService.findAll();
-    }
-	
+	}
+
 	@GetMapping("/clientes/{cli_dni}")
-    public ResponseEntity<Clientes> findCliente(@PathVariable String cli_dni) {
+	public ResponseEntity<Clientes> findCliente(@PathVariable String cli_dni) {
 		return clientesService.findCliente(cli_dni);
-    }
-	
-	
+	}
+
 	@PostMapping("/clientes")
-    public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {        
-        return clientesService.insert(cliente);
-    }
-	
+	public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {
+		return clientesService.insert(cliente);
+	}
+
 	@PutMapping("/clientes/{idClientes}")
 	public ResponseEntity<Clientes> update(@ModelAttribute Clientes cliente) {
 		return clientesService.update(cliente);
 	}
-	
+
 	@DeleteMapping("/clientes/{idClientes}")
 	public ResponseEntity<Clientes> delete(@PathVariable String cli_dni) {
 		return clientesService.delete(cli_dni);
 	}
-	
+
 	@GetMapping("/clientes/simple/{cli_dni}")
-    public ResponseEntity<ClienteSimpleDto> findClienteSimple(@PathVariable String cli_dni) {				
+	public ResponseEntity<ClienteSimpleDto> findClienteSimple(@PathVariable String cli_dni) {
 		return clientesService.findClienteSimple(cli_dni);
-    }
-	
+	}
+
 }
