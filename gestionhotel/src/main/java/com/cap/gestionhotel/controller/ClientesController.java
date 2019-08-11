@@ -30,18 +30,15 @@ public class ClientesController {
 
 	@Autowired
 	ClientesService clientesService;
-	
-	@Autowired
-	ApplicationContext context;
-	
+		
 	@Autowired
 	ClienteLoginDto clienteLoginDto;
 
 	@GetMapping("/lista")
-	public String listaClientes(Model model) {
-		//String[] names = context.getBeanDefinitionNames();
-		model.addAttribute("listaClientes", clientesService.listaClientes());
-		return "listaClientes";
+	public ModelAndView listaClientes(ModelAndView modelAndView) {
+		modelAndView.addObject("listaClientes", clientesService.listaClientes());
+		modelAndView.setViewName("listaClientes");
+		return modelAndView;
 	}
 	
 	@PostMapping("/login")
@@ -54,9 +51,9 @@ public class ClientesController {
 		
 		if (response.getStatusCode().equals(HttpStatus.OK)) {
 			modelAndView.addObject("clienteLogin", response.getBody());
-			modelAndView.setViewName("listaClientes");
-		}else {
 			modelAndView.setViewName("index");
+		}else {
+			modelAndView.setViewName("login");
 		}
 
 		return modelAndView;
