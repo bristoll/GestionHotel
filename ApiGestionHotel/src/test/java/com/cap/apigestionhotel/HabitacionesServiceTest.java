@@ -60,7 +60,7 @@ public class HabitacionesServiceTest {
     }
 	
 	@Test
-	public void update(Habitaciones habitacion) {
+	public void update() {
 		Assert.assertEquals( HttpStatus.CREATED, habitacionesService.update(habitacion).getStatusCode());
 	}
 	
