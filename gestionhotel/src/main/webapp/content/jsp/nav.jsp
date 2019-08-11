@@ -13,18 +13,27 @@
 				href="http://localhost:8080">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item"><a class="nav-link"
-				href="http://localhost:8080/clientes/lista">clientes</a></li>	
-			
+				href="http://localhost:8080/clientes/lista">clientes</a></li>
+
 		</ul>
 		<c:set var="login" value="${clienteLogin}" />
-			<c:choose>
-  				<c:when test="${login != null}">
-					<span class="navbar-text"><c:out value="${login.nombreCompleto}"/></span>
-  				</c:when>
-  				<c:otherwise>
-  					<a class="nav-link"
-				href="http://localhost:8080/login">Login</a>
-  				</c:otherwise>
-  			</c:choose>
+		<c:choose>
+			<c:when test="${login.nombreCompleto != null}">
+
+			<div class="dropdown">
+				<span class="navbar-text dropdown-toggle" id="navbarDropdown"
+					role="button" data-toggle="dropdown"><c:out
+						value="${login.nombreCompleto}" /></span>
+
+				<div class="dropdown-menu dropdown-menu-sm-right" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="http://localhost:8080/clientes/logout">Cerrar sesión</a>
+				</div>
+			</div>
+
+			</c:when>
+			<c:otherwise>
+				<a class="nav-link" href="http://localhost:8080/login">Login</a>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </nav>

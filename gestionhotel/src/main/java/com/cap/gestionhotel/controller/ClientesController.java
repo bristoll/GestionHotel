@@ -61,4 +61,13 @@ public class ClientesController {
 		return modelAndView;
 	}
 	
+	@GetMapping("/logout")
+	public ModelAndView logout(ModelAndView modelAndView) {
+		
+		modelAndView.addObject("clienteLogin", new ClienteSimpleDto());
+		
+		modelAndView.setViewName("index");
+		return modelAndView;
+	}
+	
 }
