@@ -55,9 +55,9 @@ public class ClientesController {
 		
 		if (response.getStatusCode().equals(HttpStatus.OK)) {
 			modelAndView.addObject("clienteLogin", response.getBody());
-			modelAndView.setViewName("index");
+			modelAndView.setViewName("redirect:/");
 		}else {
-			modelAndView.setViewName("login");
+			modelAndView.setViewName("redirect:/login");
 		}
 
 		return modelAndView;
@@ -68,7 +68,7 @@ public class ClientesController {
 		
 		modelAndView.addObject("clienteLogin", new ClienteSimpleDto());
 		
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("redirect:/");
 		return modelAndView;
 	}
 	

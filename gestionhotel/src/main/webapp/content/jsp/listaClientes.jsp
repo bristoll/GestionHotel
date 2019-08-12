@@ -40,14 +40,22 @@
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach var="cliente" items="${listaClientes}">
-			<tr><td><c:out value="${cliente.cli_nombre}" /></td>
-			<td><a class="btn btn-primary" href="/admin/delete/${cliente.cli_dni}" role="button">borrar</a>
-			<a class="btn btn-primary" href="/admin/update/${cliente.cli_dni}" role="button">update</a></td></tr>
-		</c:forEach>			
+			<c:forEach var="cliente" items="${listaClientes}">
+				<tr>
+					<td><c:out value="${cliente.cli_nombre}" /></td>
+					<td><a class="btn btn-primary"
+						href="/admin/delete/${cliente.cli_dni}" role="button">Borrar</a> <a
+						class="btn btn-primary" href="/admin/update/${cliente.cli_dni}"
+						role="button">Actualizar</a></td>
+				</tr>
+			</c:forEach>
 
 		</tbody>
 	</table>
+	<div>
+		<a class="btn btn-primary" href="/add"
+			role="button">Añadir</a>
+	</div>
 
 </body>
 </html>

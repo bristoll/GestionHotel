@@ -32,4 +32,8 @@ public class AdminService {
 		restTemplate.delete("http://localhost:8086/rest/clientes/"+id);
 	}
 	
+	public void add(Clientes cliente) {
+		restTemplate.postForEntity("http://localhost:8086/rest/clientes", cliente, Clientes.class);
+	}
+	
 }

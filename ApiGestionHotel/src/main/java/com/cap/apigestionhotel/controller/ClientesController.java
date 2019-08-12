@@ -59,7 +59,7 @@ public class ClientesController {
 	}
 
 	@PostMapping("/clientes")
-	public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {
+	public ResponseEntity<Clientes> insert(@RequestBody Clientes cliente) {
 		return clientesService.insert(cliente);
 	}
 

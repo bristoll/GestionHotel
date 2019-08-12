@@ -12,16 +12,23 @@ import org.springframework.web.servlet.ModelAndView;
 public class AppController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView index() {
+	public ModelAndView defaultIndex() {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("index");
 		return model;
 	}
-	
+		
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login() {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("login");
+		return model;
+	}
+	
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public ModelAndView add() {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("addcliente");
 		return model;
 	}
 }
