@@ -20,6 +20,7 @@ import com.cap.apigestionhotel.service.ProductosService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class ProductosServiceTest {
 
 	@Autowired
@@ -54,7 +55,6 @@ public class ProductosServiceTest {
     }
     
     @Test
-    @Transactional
     public void updateTest() {
         Assert.assertEquals( HttpStatus.OK, productosService.update(producto).getStatusCode());
     }

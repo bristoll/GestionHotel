@@ -21,6 +21,7 @@ import com.cap.apigestionhotel.service.ProductosService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class HotelesServiceTest {
 
 	@Autowired
@@ -56,7 +57,6 @@ public class HotelesServiceTest {
     }
     
     @Test
-    @Transactional
     public void updateTest() {
         Assert.assertEquals( HttpStatus.OK, hotelesService.update(hotel).getStatusCode());
     }
