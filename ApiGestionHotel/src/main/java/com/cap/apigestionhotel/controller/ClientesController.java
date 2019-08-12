@@ -68,7 +68,7 @@ public class ClientesController {
 		return clientesService.update(cliente);
 	}
 
-	@DeleteMapping("/clientes/{idClientes}")
+	@DeleteMapping("/clientes/{cli_dni}")
 	public ResponseEntity<Clientes> delete(@PathVariable String cli_dni) {
 		return clientesService.delete(cli_dni);
 	}

@@ -32,11 +32,22 @@
 
 	<h1>Clientes</h1>
 
-	<ul>
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">DNI</th>
+				<th scope="col">Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
 		<c:forEach var="cliente" items="${listaClientes}">
-			<li><c:out value="${cliente.cli_nombre}" /></li>
-		</c:forEach>
-	</ul>
+			<tr><td><c:out value="${cliente.cli_nombre}" /></td>
+			<td><a class="btn btn-primary" href="/admin/delete/${cliente.cli_dni}" role="button">borrar</a>
+			<a class="btn btn-primary" href="/admin/update/${cliente.cli_dni}" role="button">update</a></td></tr>
+		</c:forEach>			
+
+		</tbody>
+	</table>
 
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.cap.gestionhotel.controller;
 
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import com.cap.gestionhotel.model.ClienteLoginDto;
 import com.cap.gestionhotel.model.ClienteSimpleDto;
@@ -70,4 +72,5 @@ public class ClientesController {
 		return modelAndView;
 	}
 	
+		
 }
