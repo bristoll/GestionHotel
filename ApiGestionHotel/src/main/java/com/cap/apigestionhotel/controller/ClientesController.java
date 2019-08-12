@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.apigestionhotel.dao.entity.Clientes;
+import com.cap.apigestionhotel.dto.ClienteLoginDto;
 import com.cap.apigestionhotel.dto.ClienteSimpleDto;
 import com.cap.apigestionhotel.impl.ClientesImpl;
 import com.cap.apigestionhotel.service.ClientesService;
-
 
 @RestController
 @RequestMapping("/rest")
@@ -28,53 +28,54 @@ public class ClientesController {
 
 	@Autowired
 	ClientesService clientesService;
-	
+
 	@PostMapping("/clientes/login")
-    public ResponseEntity<ClienteSimpleDto> login(@RequestParam String cli_email,@RequestParam String password ) {
-		Clientes cliente = clientesService.login(cli_email);
-		boolean isValid=false;
-		if(cliente.getPassword().equals(password)){
-			isValid=true;	
-			ClienteSimpleDto clienteSimpleDto= new ClienteSimpleDto(cliente.getCli_dni(),
-					cliente.getCli_nombre()+" "+cliente.getCli_apellido(),
-					cliente.getCli_email(),
-					cliente.getCli_ciudad());
-			return new ResponseEntity<ClienteSimpleDto> (clienteSimpleDto, HttpStatus.OK);
+	public ResponseEntity<ClienteSimpleDto> login(@RequestBody ClienteLoginDto clienteLoginDto) {
+		Clientes cliente = clientesService.login(clienteLoginDto.getEmail());
+
+		boolean isValid = false;
+		if (cliente != null) {
+			if (cliente.getPassword().equals(clienteLoginDto.getPass())) {
+				isValid = true;
+				ClienteSimpleDto clienteSimpleDto = new ClienteSimpleDto(cliente.getCli_dni(),
+						cliente.getCli_nombre() + " " + cliente.getCli_apellido(), cliente.getCli_email(),
+						cliente.getCli_ciudad());
+				return new ResponseEntity<>(clienteSimpleDto, HttpStatus.OK);
+			}
 		}
-		return new ResponseEntity<> (HttpStatus.BAD_REQUEST);
 		
-    }
-	
-	
+		return new ResponseEntity<>(new ClienteSimpleDto(), HttpStatus.RESET_CONTENT);
+
+	}
+
 	@GetMapping("/clientes")
-    public ResponseEntity<List<Clientes>> findAll() {
+	public ResponseEntity<List<Clientes>> findAll() {
 		return clientesService.findAll();
-    }
-	
+	}
+
 	@GetMapping("/clientes/{cli_dni}")
-    public ResponseEntity<Clientes> findCliente(@PathVariable String cli_dni) {
+	public ResponseEntity<Clientes> findCliente(@PathVariable String cli_dni) {
 		return clientesService.findCliente(cli_dni);
-    }
-	
-	
+	}
+
 	@PostMapping("/clientes")
-    public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {        
-        return clientesService.insert(cliente);
-    }
-	
+	public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {
+		return clientesService.insert(cliente);
+	}
+
 	@PutMapping("/clientes/{idClientes}")
 	public ResponseEntity<Clientes> update(@ModelAttribute Clientes cliente) {
 		return clientesService.update(cliente);
 	}
-	
+
 	@DeleteMapping("/clientes/{idClientes}")
 	public ResponseEntity<Clientes> delete(@PathVariable String cli_dni) {
 		return clientesService.delete(cli_dni);
 	}
-	
+
 	@GetMapping("/clientes/simple/{cli_dni}")
-    public ResponseEntity<ClienteSimpleDto> findClienteSimple(@PathVariable String cli_dni) {				
+	public ResponseEntity<ClienteSimpleDto> findClienteSimple(@PathVariable String cli_dni) {
 		return clientesService.findClienteSimple(cli_dni);
-    }
-	
+	}
+
 }

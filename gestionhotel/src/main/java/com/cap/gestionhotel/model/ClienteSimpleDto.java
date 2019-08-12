@@ -1,4 +1,4 @@
-package com.cap.apigestionhotel.dto;
+package com.cap.gestionhotel.model;
 
 public class ClienteSimpleDto {
 
