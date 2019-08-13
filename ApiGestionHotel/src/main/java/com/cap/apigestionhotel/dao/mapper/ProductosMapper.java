@@ -21,7 +21,7 @@ public interface ProductosMapper {
 	@Select("SELECT * FROM productos where pro_id = #{pro_id}")
 	Productos findProductos(int pro_id);
 
-	@Update("UPDATE productos SET pro_nombre = #{pro_nombre}, pro_unidad_medida = #{pro_unidad_medida}, pro_precio_venta = #{pro_precio_venta} WHERE pro_id=#{pro_id}")
+	@Update("UPDATE productos SET pro_nombre = #{pro_nombre}, pro_unidad_medida = #{pro_unidad_medida},pro_precio_venta = #{pro_precio_venta} = where pro_id=#{pro_id}")
 	void update(Productos producto);
 
 	@Update("DELETE from productos where pro_id=#{pro_id}")
