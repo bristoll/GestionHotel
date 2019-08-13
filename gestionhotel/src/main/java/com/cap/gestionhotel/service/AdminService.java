@@ -16,24 +16,24 @@ public class AdminService {
 
 	@Autowired
 	RestTemplate restTemplate;
-	
+
 	public List<Clientes> listaClientes() {
 		ResponseEntity<List<Clientes>> responseEntity = restTemplate.exchange("http://localhost:8086/rest/clientes",
 				HttpMethod.GET, null, new ParameterizedTypeReference<List<Clientes>>() {
 				});
 		return responseEntity.getBody();
 	}
-	
+
 	public void delete(String id) {
-		restTemplate.delete("http://localhost:8086/rest/clientes/"+id);
+		restTemplate.delete("http://localhost:8086/rest/clientes/" + id);
 	}
-	
+
 	public void update(String id) {
-		restTemplate.delete("http://localhost:8086/rest/clientes/"+id);
+		restTemplate.delete("http://localhost:8086/rest/clientes/" + id);
 	}
-	
+
 	public void add(Clientes cliente) {
 		restTemplate.postForEntity("http://localhost:8086/rest/clientes", cliente, Clientes.class);
 	}
-	
+
 }
