@@ -63,8 +63,8 @@ public class ClientesController {
 		return clientesService.insert(cliente);
 	}
 
-	@PutMapping("/clientes/{idClientes}")
-	public ResponseEntity<Clientes> update(@ModelAttribute Clientes cliente) {
+	@PutMapping("/clientes/update")
+	public ResponseEntity<Clientes> update(@RequestBody Clientes cliente) {
 		return clientesService.update(cliente);
 	}
 

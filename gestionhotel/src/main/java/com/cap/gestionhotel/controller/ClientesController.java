@@ -3,6 +3,7 @@ package com.cap.gestionhotel.controller;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -64,9 +65,10 @@ public class ClientesController {
 	}
 	
 	@GetMapping("/logout")
-	public ModelAndView logout(ModelAndView modelAndView) {
+	public ModelAndView logout(ModelAndView modelAndView, HttpSession session) {
 		
-		modelAndView.addObject("clienteLogin", new ClienteSimpleDto());
+//		modelAndView.addObject("clienteLogin", new ClienteSimpleDto());
+		
 		
 		modelAndView.setViewName("redirect:/");
 		return modelAndView;

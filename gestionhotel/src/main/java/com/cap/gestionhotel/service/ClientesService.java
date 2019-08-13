@@ -28,11 +28,17 @@ public class ClientesService {
 		return responseEntity.getBody();
 	}
 
+	public Clientes buscarCliente(String dni) {
+		ResponseEntity<Clientes> responseEntity = restTemplate.exchange("http://localhost:8086/rest/clientes/" + dni,
+				HttpMethod.GET, null, new ParameterizedTypeReference<Clientes>() {
+				});
+		return responseEntity.getBody();
+	}
+
 	public ResponseEntity<ClienteSimpleDto> login(ClienteLoginDto clienteLoginDto) {
-		
-		ResponseEntity<ClienteSimpleDto> responseEntity = restTemplate.postForEntity("http://localhost:8086/rest/clientes/login",
-				clienteLoginDto, ClienteSimpleDto.class);
-		
+
+		ResponseEntity<ClienteSimpleDto> responseEntity = restTemplate
+				.postForEntity("http://localhost:8086/rest/clientes/login", clienteLoginDto, ClienteSimpleDto.class);
 
 		return responseEntity;
 	}
