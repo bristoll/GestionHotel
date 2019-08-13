@@ -29,7 +29,7 @@ public class AdminService {
 	}
 
 	public void update(Clientes cliente) {
-		restTemplate.postForEntity("http://localhost:8086/rest/update", cliente, Clientes.class);
+		restTemplate.put("http://localhost:8086/rest/clientes/update", cliente, Clientes.class);
 	}
 
 	public void add(Clientes cliente) {

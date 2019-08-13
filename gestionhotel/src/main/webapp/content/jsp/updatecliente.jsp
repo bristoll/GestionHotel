@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +38,14 @@
 		<div class="form-group col-md-5">
 
 			<form action="/admin/update" method="post">
+					
+					<div class="form-group">
+<!-- 						<label for="exampleInputNombre">DNI</label> -->
+						<input type="hidden" class="form-control"
+							id="exampleInputNombre" aria-describedby="emailHelp"
+							value="${cliente.cli_dni}" name="dni" />
+
+					</div>
 								
 					<div class="form-group">
 						<label for="exampleInputNombre">Nombre</label>
