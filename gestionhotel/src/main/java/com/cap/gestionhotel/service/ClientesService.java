@@ -29,13 +29,6 @@ public class ClientesService {
 	}
 
 	public ResponseEntity<ClienteSimpleDto> login(ClienteLoginDto clienteLoginDto) {
-
-		//HttpEntity<ClienteLoginDto> entity = new HttpEntity<ClienteLoginDto>(clienteLoginDto);
-
-//		ResponseEntity<ClienteSimpleDto> responseEntity = restTemplate.exchange(
-//				"http://localhost:8086/rest/clientes/login", HttpMethod.POST, entity,
-//				new ParameterizedTypeReference<ClienteSimpleDto>() {
-//				});
 		
 		ResponseEntity<ClienteSimpleDto> responseEntity = restTemplate.postForEntity("http://localhost:8086/rest/clientes/login",
 				clienteLoginDto, ClienteSimpleDto.class);

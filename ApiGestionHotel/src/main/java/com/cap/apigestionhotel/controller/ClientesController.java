@@ -59,7 +59,7 @@ public class ClientesController {
 	}
 
 	@PostMapping("/clientes")
-	public ResponseEntity<Clientes> insert(@ModelAttribute Clientes cliente) {
+	public ResponseEntity<Clientes> insert(@RequestBody Clientes cliente) {
 		return clientesService.insert(cliente);
 	}
 
@@ -68,7 +68,7 @@ public class ClientesController {
 		return clientesService.update(cliente);
 	}
 
-	@DeleteMapping("/clientes/{idClientes}")
+	@DeleteMapping("/clientes/{cli_dni}")
 	public ResponseEntity<Clientes> delete(@PathVariable String cli_dni) {
 		return clientesService.delete(cli_dni);
 	}

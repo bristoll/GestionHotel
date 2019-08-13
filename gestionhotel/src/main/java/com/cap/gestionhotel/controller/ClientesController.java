@@ -1,17 +1,26 @@
 package com.cap.gestionhotel.controller;
 
+import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import com.cap.gestionhotel.model.ClienteLoginDto;
 import com.cap.gestionhotel.model.ClienteSimpleDto;
@@ -46,9 +55,9 @@ public class ClientesController {
 		
 		if (response.getStatusCode().equals(HttpStatus.OK)) {
 			modelAndView.addObject("clienteLogin", response.getBody());
-			modelAndView.setViewName("index");
+			modelAndView.setViewName("redirect:/");
 		}else {
-			modelAndView.setViewName("login");
+			modelAndView.setViewName("redirect:/login");
 		}
 
 		return modelAndView;
@@ -59,8 +68,9 @@ public class ClientesController {
 		
 		modelAndView.addObject("clienteLogin", new ClienteSimpleDto());
 		
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("redirect:/");
 		return modelAndView;
 	}
 	
+		
 }
