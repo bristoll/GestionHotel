@@ -26,7 +26,7 @@ public interface ClientesMapper {
 	void insert(Clientes cliente);
 	
 	@Update("UPDATE clientes SET cli_nombre = #{cli_nombre}, cli_apellido = #{cli_apellido}, cli_email = #{cli_email}, cli_direccion = #{cli_direccion}, cli_codigopos = #{cli_codigopos}, cli_ciudad = #{cli_ciudad}, password = #{password} WHERE cli_dni = #{cli_dni}")
- 	void update(Clientes cliente);
+	void update(Clientes cliente);
 	
 	@Update("DELETE from clientes where cli_dni=#{cli_dni}")
 	void delete(String cli_dni);

@@ -45,7 +45,7 @@
 					<td><c:out value="${cliente.cli_nombre}" /></td>
 					<td><a class="btn btn-primary"
 						href="/admin/delete/${cliente.cli_dni}" role="button">Borrar</a> <a
-						class="btn btn-primary" href="/admin/update/${cliente.cli_dni}"
+						class="btn btn-primary" href="/update/${cliente.cli_dni}"
 						role="button">Actualizar</a></td>
 				</tr>
 			</c:forEach>

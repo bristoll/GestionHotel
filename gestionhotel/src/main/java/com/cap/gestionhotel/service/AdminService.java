@@ -28,8 +28,8 @@ public class AdminService {
 		restTemplate.delete("http://localhost:8086/rest/clientes/" + id);
 	}
 
-	public void update(String id) {
-		restTemplate.delete("http://localhost:8086/rest/clientes/" + id);
+	public void update(Clientes cliente) {
+		restTemplate.put("http://localhost:8086/rest/clientes/update", cliente, Clientes.class);
 	}
 
 	public void add(Clientes cliente) {

@@ -68,4 +68,23 @@ public class AdminController {
 		return modelAndView;
 	}
 	
+	@PostMapping("/update")
+	public ModelAndView update(ModelAndView modelAndView, @RequestParam Map<String,String> datos) {
+		Clientes cliente = new Clientes();
+		
+		cliente.setCli_apellido(datos.get("apellido"));
+		cliente.setCli_ciudad(datos.get("ciudad"));
+		cliente.setCli_codigopos(Integer.parseInt(datos.get("cod")));
+		cliente.setCli_direccion(datos.get("dir"));
+		cliente.setCli_dni(datos.get("dni"));
+		cliente.setCli_email(datos.get("email"));
+		cliente.setCli_nombre(datos.get("nombre"));
+		cliente.setPassword(datos.get("pass"));
+		
+		//attributes.addAttribute("", attributeValue);
+		adminService.update(cliente);
+		modelAndView.setViewName("redirect:/admin/lista");
+		return modelAndView;
+	}
+	
 }
