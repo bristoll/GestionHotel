@@ -2,6 +2,8 @@ package com.cap.gestionhotel.controller;
 
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -29,7 +31,6 @@ import com.cap.gestionhotel.service.ClientesService;
 
 
 @Controller
-@SessionAttributes("clienteLogin")
 @RequestMapping("/clientes")
 public class ClientesController {
 
@@ -47,7 +48,10 @@ public class ClientesController {
 	}
 	
 	@PostMapping("/login")
-	public ModelAndView login(ModelAndView modelAndView, @RequestParam Map<String,String> datos) {
+	public ModelAndView login(ModelAndView modelAndView, @RequestParam Map<String,String> datos,
+			HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
 		
 		clienteLoginDto.setEmail(datos.get("email"));
 		clienteLoginDto.setPass(datos.get("pass"));
@@ -55,7 +59,8 @@ public class ClientesController {
 		ResponseEntity<ClienteSimpleDto> response = clientesService.login(clienteLoginDto);
 		
 		if (response.getStatusCode().equals(HttpStatus.OK)) {
-			modelAndView.addObject("clienteLogin", response.getBody());
+			//modelAndView.addObject("clienteLogin", response.getBody());
+			session.setAttribute("clienteLogin", response.getBody());
 			modelAndView.setViewName("redirect:/");
 		}else {
 			modelAndView.setViewName("redirect:/login");
@@ -65,10 +70,11 @@ public class ClientesController {
 	}
 	
 	@GetMapping("/logout")
-	public ModelAndView logout(ModelAndView modelAndView, HttpSession session) {
+	public ModelAndView logout(ModelAndView modelAndView, HttpServletRequest request) {
 		
 //		modelAndView.addObject("clienteLogin", new ClienteSimpleDto());
-		
+		HttpSession session = request.getSession();
+		session.invalidate();
 		
 		modelAndView.setViewName("redirect:/");
 		return modelAndView;
