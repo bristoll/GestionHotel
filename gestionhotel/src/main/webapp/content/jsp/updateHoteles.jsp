@@ -33,7 +33,7 @@
 
 <div class="row justify-content-center">
 
-<c:set var="hotel" value="${hotelUpdate}" />
+<c:set var="hotel" value="${hotelesUpdate}" />
 
 		<div class="form-group col-md-5">
 
@@ -77,8 +77,7 @@
 							value="${hotel.ho_direccion}" name="dir" />
 
 					</div>
-					
-					
+				
 
 				<button type="submit" class="btn btn-primary">Enviar</button>
 			</form>
