@@ -37,12 +37,11 @@
 
 		<div class="form-group col-md-5">
 
-			<form action="/admin/update" method="post">
+			<form action="/admin/updateClientes" method="post">
 					
 					<div class="form-group">
-<!-- 						<label for="exampleInputNombre">DNI</label> -->
 						<input type="hidden" class="form-control"
-							id="exampleInputNombre" aria-describedby="emailHelp"
+							id="exampleInputDni" aria-describedby="dniHelp"
 							value="${cliente.cli_dni}" name="dni" />
 
 					</div>

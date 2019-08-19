@@ -48,4 +48,12 @@ public class AdminService {
 		return responseEntity.getBody();
 	}
 
+	
+	public void updateHoteles(Hoteles hotel) {
+		restTemplate.put("http://localhost:8086/rest/hoteles/update", hotel, Hoteles.class);
+	}
+
+	public void addHoteles(Hoteles hotel) {
+		restTemplate.postForEntity("http://localhost:8086/rest/hoteles", hotel, Hoteles.class);
+	}
 }

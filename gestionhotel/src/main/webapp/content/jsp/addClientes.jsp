@@ -41,13 +41,9 @@
 					<form action="/clientes/registrar" method="post">
 				</c:when>
 				<c:when test="${path == 'add'}">
-					<form action="/admin/add" method="post">
+					<form action="/admin/addClientes" method="post">
 				</c:when>
 			</c:choose>
-
-			<form action="/admin/add" method="post">
-
-				<form action="clientes/registrar" method="post">
 
 					<div class="form-group">
 						<label for="exampleInputDNI">DNI</label> <input type="text"

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cap.gestionhotel.model.Clientes;
+import com.cap.gestionhotel.model.Hoteles;
 import com.cap.gestionhotel.service.AdminService;
 import com.cap.gestionhotel.service.ClientesService;
 
@@ -40,14 +41,6 @@ public class AdminController {
 		return modelAndView;
 	}
 	
-	@GetMapping("/updateClientes/{cli_dni}")
-	public ModelAndView updateClientes(ModelAndView modelAndView, @PathVariable String cli_dni) {
-		
-		//attributes.addAttribute("", attributeValue);
-		
-		modelAndView.setViewName("redirect:/admin/listaClientes");
-		return modelAndView;
-	}
 	
 	@PostMapping("/addClientes")
 	public ModelAndView addClientes(ModelAndView modelAndView, @RequestParam Map<String,String> datos) {
@@ -89,6 +82,7 @@ public class AdminController {
 	
 	//--------------------------------------------------------------------------------------------------------------//
 	
+	
 	@GetMapping("/listaHoteles")
 	public ModelAndView listaHoteles(ModelAndView modelAndView) {
 		modelAndView.addObject("listaHoteles", adminService.listaHoteles());
@@ -105,6 +99,35 @@ public class AdminController {
 		return modelAndView;
 	}
 	
+	@PostMapping("/addHoteles")
+	public ModelAndView addHoteles(ModelAndView modelAndView, @RequestParam Map<String,String> datos) {
+		Hoteles hotel = new Hoteles();
+		
+		hotel.setHo_id(Integer.parseInt(datos.get("id")));
+		hotel.setHo_nombre(datos.get("nombre"));
+		hotel.setHo_zona(datos.get("zona"));
+		hotel.setHo_direccion(datos.get("direccion"));
+		hotel.setHo_categoria(datos.get("categoria"));
+
+		
+		adminService.addHoteles(hotel);
+		modelAndView.setViewName("redirect:/admin/listaHoteles");
+		return modelAndView;
+	}
 	
+	@PostMapping("/updateHoteles")
+	public ModelAndView updateHoteles(ModelAndView modelAndView, @RequestParam Map<String,String> datos) {
+		Hoteles hotel = new Hoteles();
+		
+		hotel.setHo_id(Integer.parseInt(datos.get("id")));
+		hotel.setHo_nombre(datos.get("nombre"));
+		hotel.setHo_zona(datos.get("zona"));
+		hotel.setHo_direccion(datos.get("direccion"));
+		hotel.setHo_categoria(datos.get("categoria"));
+		
+		adminService.updateHoteles(hotel);
+		modelAndView.setViewName("redirect:/admin/listaHoteles");
+		return modelAndView;
+	}
 	
 }

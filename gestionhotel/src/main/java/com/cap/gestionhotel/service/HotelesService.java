@@ -25,12 +25,13 @@ public class HotelesService {
 		return responseEntity.getBody();
 	}
 
-	public Hoteles buscarHotel(int ho_id) {
+	public Hoteles buscarHoteles(int ho_id) {
 		ResponseEntity<Hoteles> responseEntity = restTemplate.exchange("http://localhost:8086/rest/hoteles/" + ho_id,
 				HttpMethod.GET, null, new ParameterizedTypeReference<Hoteles>() {
 				});
 		return responseEntity.getBody();
 	}
+
 
 
 
