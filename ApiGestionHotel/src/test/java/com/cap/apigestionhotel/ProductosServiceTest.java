@@ -29,7 +29,7 @@ public class ProductosServiceTest {
 	Productos producto = new Productos();
 	
     @Before
-    public void PagoServiceTest() {
+    public void ProductosServiceTest() {
     	
     	producto.setPro_nombre("Vodka");
     	producto.setPro_precio_venta(20);

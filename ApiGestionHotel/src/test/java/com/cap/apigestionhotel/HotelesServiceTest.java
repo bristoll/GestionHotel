@@ -30,7 +30,7 @@ public class HotelesServiceTest {
 	Hoteles hotel = new Hoteles();
 	
     @Before
-    public void PagoServiceTest() {
+    public void HotelesServiceTest() {
     	
     	hotel.setHo_nombre("Hotel el Picador");
     	hotel.setHo_categoria("5 estrellas");

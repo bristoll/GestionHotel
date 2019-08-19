@@ -1,7 +1,5 @@
 package com.cap.apigestionhotel;
 
-import java.sql.Date;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,11 +26,11 @@ public class ClientesServiceTest {
 	@Autowired
 	private ClientesService clientesService;
 		
-	Clientes cliente = new Clientes();
+	Clientes cliente ;
 	
     @Before
-    public void PagoServiceTest() {
-    	
+    public void ClientesServiceTest() {
+    	cliente = new Clientes();
     	cliente.setCli_nombre("Manolo");
     	cliente.setCli_apellido("Lama");
     	cliente.setCli_email("manuelito@gmail.com");
