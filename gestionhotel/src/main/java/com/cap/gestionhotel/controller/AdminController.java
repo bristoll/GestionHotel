@@ -36,7 +36,7 @@ public class AdminController {
 		
 		adminService.deleteClientes(cli_dni);
 		modelAndView.addObject("listaClientes", adminService.listaClientes());
-		modelAndView.setViewName("redirect:/admin/lista");
+		modelAndView.setViewName("redirect:/admin/listaClientes");
 		return modelAndView;
 	}
 	
@@ -45,7 +45,7 @@ public class AdminController {
 		
 		//attributes.addAttribute("", attributeValue);
 		
-		modelAndView.setViewName("redirect:/admin/lista");
+		modelAndView.setViewName("redirect:/admin/listaClientes");
 		return modelAndView;
 	}
 	
@@ -64,7 +64,7 @@ public class AdminController {
 		
 		//attributes.addAttribute("", attributeValue);
 		adminService.addClientes(cliente);
-		modelAndView.setViewName("redirect:/admin/lista");
+		modelAndView.setViewName("redirect:/admin/listaClientes");
 		return modelAndView;
 	}
 	
@@ -83,7 +83,7 @@ public class AdminController {
 		
 		//attributes.addAttribute("", attributeValue);
 		adminService.updateClientes(cliente);
-		modelAndView.setViewName("redirect:/admin/lista");
+		modelAndView.setViewName("redirect:/admin/listaClientes");
 		return modelAndView;
 	}
 	
