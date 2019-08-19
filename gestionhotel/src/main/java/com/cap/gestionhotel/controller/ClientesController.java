@@ -100,7 +100,7 @@ public class ClientesController {
 		cliente.setPassword(datos.get("pass"));
 
 		// attributes.addAttribute("", attributeValue);
-		adminService.add(cliente);
+		adminService.addClientes(cliente);
 		modelAndView.setViewName("redirect:/login");
 		return modelAndView;
 	}
