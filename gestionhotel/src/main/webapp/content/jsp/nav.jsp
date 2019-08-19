@@ -18,11 +18,12 @@
 				href="http://localhost:8080/admin/listaHoteles">hoteles</a></li>
 
 		</ul>
+
 		<c:set var="login" value="${clienteLogin}" />
 		<c:choose>
 			<c:when test="${login.nombreCompleto != null}">
 
-			<div class="dropdown">
+				<div class="dropdown">
 				<span class="navbar-text dropdown-toggle" id="navbarDropdown"
 					role="button" data-toggle="dropdown"><c:out
 						value="${login.nombreCompleto}" /></span>
@@ -34,7 +35,20 @@
 
 			</c:when>
 			<c:otherwise>
-				<a class="nav-link" href="http://localhost:8080/login">Login</a>
+			
+			<div class="dropdown">
+					<span class="navbar-text dropdown-toggle" id="navbarDropdown"
+						role="button" data-toggle="dropdown">Login/Registrar</span>
+
+					<div class="dropdown-menu dropdown-menu-sm-right"
+						aria-labelledby="navbarDropdown">
+						<a class="dropdown-item"
+							href="http://localhost:8080/login">Iniciar sesion</a> <a
+							class="dropdown-item"
+							href="http://localhost:8080/registrar">Registrar</a>
+					</div>
+				</div>
+				
 			</c:otherwise>
 		</c:choose>
 	</div>
