@@ -13,7 +13,9 @@
 				href="http://localhost:8080">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item"><a class="nav-link"
-				href="http://localhost:8080/admin/lista">clientes</a></li>
+				href="http://localhost:8080/admin/listaClientes">clientes</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="http://localhost:8080/admin/listaHoteles">hoteles</a></li>
 
 		</ul>
 		<c:set var="login" value="${clienteLogin}" />

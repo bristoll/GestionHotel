@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.cap.gestionhotel.model.Clientes;
+import com.cap.gestionhotel.model.Hoteles;
 
 @Service
 public class AdminService {
@@ -24,16 +25,27 @@ public class AdminService {
 		return responseEntity.getBody();
 	}
 
-	public void delete(String id) {
+	public void deleteClientes(String id) {
 		restTemplate.delete("http://localhost:8086/rest/clientes/" + id);
 	}
 
-	public void update(Clientes cliente) {
+	public void updateClientes(Clientes cliente) {
 		restTemplate.put("http://localhost:8086/rest/clientes/update", cliente, Clientes.class);
 	}
 
-	public void add(Clientes cliente) {
+	public void addClientes(Clientes cliente) {
 		restTemplate.postForEntity("http://localhost:8086/rest/clientes", cliente, Clientes.class);
+	}
+
+	public void deleteHoteles(int ho_id) {
+		restTemplate.delete("http://localhost:8086/rest/hoteles/" + ho_id);		
+	}
+
+	public List<Hoteles> listaHoteles() {
+		ResponseEntity<List<Hoteles>> responseEntity = restTemplate.exchange("http://localhost:8086/rest/hoteles",
+				HttpMethod.GET, null, new ParameterizedTypeReference<List<Hoteles>>() {
+				});
+		return responseEntity.getBody();
 	}
 
 }

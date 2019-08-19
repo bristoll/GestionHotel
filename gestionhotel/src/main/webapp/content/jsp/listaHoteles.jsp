@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Listado de clientes</title>
+<title>Listado de hoteles</title>
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -30,22 +30,22 @@
 
 	<jsp:include page="nav.jsp" />
 
-	<h1>Clientes</h1>
+	<h1>Hoteles</h1>
 
 	<table class="table">
 		<thead class="thead-dark">
 			<tr>
-				<th scope="col">DNI</th>
+				<th scope="col">ID</th>
 				<th scope="col">Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="cliente" items="${listaClientes}">
+			<c:forEach var="hoteles" items="${listaHoteles}">
 				<tr>
-					<td><c:out value="${cliente.cli_nombre}" /></td>
+					<td><c:out value="${hoteles.ho_nombre}" /></td>
 					<td><a class="btn btn-primary"
-						href="/admin/deleteClientes/${cliente.cli_dni}" role="button">Borrar</a> <a
-						class="btn btn-primary" href="/updateClientes/${cliente.cli_dni}"
+						href="/admin/deleteHoteles/${hoteles.ho_id}" role="button">Borrar</a> <a
+						class="btn btn-primary" href="/updateHoteles/${hoteles.ho_id}"
 						role="button">Actualizar</a></td>
 				</tr>
 			</c:forEach>
@@ -53,7 +53,7 @@
 		</tbody>
 	</table>
 	<div>
-		<a class="btn btn-primary" href="/addClientes"
+		<a class="btn btn-primary" href="/addHoteles"
 			role="button">Añadir</a>
 	</div>
 

@@ -24,24 +24,24 @@ public class AdminController {
 	@Autowired
 	AdminService adminService;
 	
-	@GetMapping("/lista")
+	@GetMapping("/listaClientes")
 	public ModelAndView listaClientes(ModelAndView modelAndView) {
 		modelAndView.addObject("listaClientes", adminService.listaClientes());
 		modelAndView.setViewName("listaClientes");
 		return modelAndView;
 	}
 	
-	@GetMapping("/delete/{cli_dni}")
-	public ModelAndView delete(ModelAndView modelAndView, @PathVariable String cli_dni) {
+	@GetMapping("/deleteClientes/{cli_dni}")
+	public ModelAndView deleteClientes(ModelAndView modelAndView, @PathVariable String cli_dni) {
 		
-		adminService.delete(cli_dni);
+		adminService.deleteClientes(cli_dni);
 		modelAndView.addObject("listaClientes", adminService.listaClientes());
 		modelAndView.setViewName("redirect:/admin/lista");
 		return modelAndView;
 	}
 	
-	@GetMapping("/update/{cli_dni}")
-	public ModelAndView update(ModelAndView modelAndView, @PathVariable String cli_dni) {
+	@GetMapping("/updateClientes/{cli_dni}")
+	public ModelAndView updateClientes(ModelAndView modelAndView, @PathVariable String cli_dni) {
 		
 		//attributes.addAttribute("", attributeValue);
 		
@@ -49,8 +49,8 @@ public class AdminController {
 		return modelAndView;
 	}
 	
-	@PostMapping("/add")
-	public ModelAndView add(ModelAndView modelAndView, @RequestParam Map<String,String> datos) {
+	@PostMapping("/addClientes")
+	public ModelAndView addClientes(ModelAndView modelAndView, @RequestParam Map<String,String> datos) {
 		Clientes cliente = new Clientes();
 		
 		cliente.setCli_apellido(datos.get("apellido"));
@@ -63,13 +63,13 @@ public class AdminController {
 		cliente.setPassword(datos.get("pass"));
 		
 		//attributes.addAttribute("", attributeValue);
-		adminService.add(cliente);
+		adminService.addClientes(cliente);
 		modelAndView.setViewName("redirect:/admin/lista");
 		return modelAndView;
 	}
 	
-	@PostMapping("/update")
-	public ModelAndView update(ModelAndView modelAndView, @RequestParam Map<String,String> datos) {
+	@PostMapping("/updateClientes")
+	public ModelAndView updateClientes(ModelAndView modelAndView, @RequestParam Map<String,String> datos) {
 		Clientes cliente = new Clientes();
 		
 		cliente.setCli_apellido(datos.get("apellido"));
@@ -82,9 +82,29 @@ public class AdminController {
 		cliente.setPassword(datos.get("pass"));
 		
 		//attributes.addAttribute("", attributeValue);
-		adminService.update(cliente);
+		adminService.updateClientes(cliente);
 		modelAndView.setViewName("redirect:/admin/lista");
 		return modelAndView;
 	}
+	
+	//--------------------------------------------------------------------------------------------------------------//
+	
+	@GetMapping("/listaHoteles")
+	public ModelAndView listaHoteles(ModelAndView modelAndView) {
+		modelAndView.addObject("listaHoteles", adminService.listaHoteles());
+		modelAndView.setViewName("listaHoteles");
+		return modelAndView;
+	}
+	
+	@GetMapping("/deleteHoteles/{ho_id}")
+	public ModelAndView deleteHoteles(ModelAndView modelAndView, @PathVariable int ho_id) {
+		
+		adminService.deleteHoteles(ho_id);
+		modelAndView.addObject("listaHoteles", adminService.listaHoteles());
+		modelAndView.setViewName("redirect:/admin/listaHoteles");
+		return modelAndView;
+	}
+	
+	
 	
 }
