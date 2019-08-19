@@ -27,14 +27,14 @@ public class AppController {
 		return modelAndView;
 	}
 	
-	@GetMapping("/add")
-	public ModelAndView add(ModelAndView modelAndView) {
+	@GetMapping("/addClientes")
+	public ModelAndView addClientes(ModelAndView modelAndView) {
 		modelAndView.setViewName("addcliente");
 		return modelAndView;
 	}
 	
-	@GetMapping("/update/{cli_dni}")
-	public ModelAndView update(ModelAndView modelAndView, @PathVariable String cli_dni) {
+	@GetMapping("/updateClientes/{cli_dni}")
+	public ModelAndView updateClientes(ModelAndView modelAndView, @PathVariable String cli_dni) {
 		
 		Clientes cliente =clientesService.buscarCliente(cli_dni);
 		

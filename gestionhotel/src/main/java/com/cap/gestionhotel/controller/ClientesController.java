@@ -40,7 +40,7 @@ public class ClientesController {
 	@Autowired
 	ClienteLoginDto clienteLoginDto;
 
-	@GetMapping("/lista")
+	@GetMapping("/listaClientes")
 	public ModelAndView listaClientes(ModelAndView modelAndView) {
 		modelAndView.addObject("listaClientes", clientesService.listaClientes());
 		modelAndView.setViewName("listaClientes");
