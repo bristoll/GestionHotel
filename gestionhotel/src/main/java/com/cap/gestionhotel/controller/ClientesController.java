@@ -27,8 +27,9 @@ import org.springframework.web.servlet.View;
 
 import com.cap.gestionhotel.model.ClienteLoginDto;
 import com.cap.gestionhotel.model.ClienteSimpleDto;
+import com.cap.gestionhotel.model.Clientes;
+import com.cap.gestionhotel.service.AdminService;
 import com.cap.gestionhotel.service.ClientesService;
-
 
 @Controller
 @RequestMapping("/clientes")
@@ -36,7 +37,10 @@ public class ClientesController {
 
 	@Autowired
 	ClientesService clientesService;
-		
+
+	@Autowired
+	AdminService adminService;
+
 	@Autowired
 	ClienteLoginDto clienteLoginDto;
 
@@ -46,39 +50,59 @@ public class ClientesController {
 		modelAndView.setViewName("listaClientes");
 		return modelAndView;
 	}
-	
+
 	@PostMapping("/login")
-	public ModelAndView login(ModelAndView modelAndView, @RequestParam Map<String,String> datos,
+	public ModelAndView login(ModelAndView modelAndView, @RequestParam Map<String, String> datos,
 			HttpServletRequest request) {
-		
+
 		HttpSession session = request.getSession();
-		
+
 		clienteLoginDto.setEmail(datos.get("email"));
 		clienteLoginDto.setPass(datos.get("pass"));
-		
+
 		ResponseEntity<ClienteSimpleDto> response = clientesService.login(clienteLoginDto);
-		
+
 		if (response.getStatusCode().equals(HttpStatus.OK)) {
-			//modelAndView.addObject("clienteLogin", response.getBody());
+			// modelAndView.addObject("clienteLogin", response.getBody());
 			session.setAttribute("clienteLogin", response.getBody());
 			modelAndView.setViewName("redirect:/");
-		}else {
+		} else {
 			modelAndView.setViewName("redirect:/login");
 		}
 
 		return modelAndView;
 	}
-	
+
 	@GetMapping("/logout")
 	public ModelAndView logout(ModelAndView modelAndView, HttpServletRequest request) {
-		
+
 //		modelAndView.addObject("clienteLogin", new ClienteSimpleDto());
 		HttpSession session = request.getSession();
 		session.invalidate();
-		
+
 		modelAndView.setViewName("redirect:/");
 		return modelAndView;
 	}
-	
-		
+
+	@PostMapping("/registrar")
+	public ModelAndView registrar(ModelAndView modelAndView, @RequestParam Map<String, String> datos,
+			HttpServletRequest request) {
+
+		Clientes cliente = new Clientes();
+
+		cliente.setCli_apellido(datos.get("apellido"));
+		cliente.setCli_ciudad(datos.get("ciudad"));
+		cliente.setCli_codigopos(Integer.parseInt(datos.get("cod")));
+		cliente.setCli_direccion(datos.get("dir"));
+		cliente.setCli_dni(datos.get("dni"));
+		cliente.setCli_email(datos.get("email"));
+		cliente.setCli_nombre(datos.get("nombre"));
+		cliente.setPassword(datos.get("pass"));
+
+		// attributes.addAttribute("", attributeValue);
+		adminService.add(cliente);
+		modelAndView.setViewName("redirect:/login");
+		return modelAndView;
+	}
+
 }

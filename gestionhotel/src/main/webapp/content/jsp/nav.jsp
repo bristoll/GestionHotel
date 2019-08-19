@@ -43,7 +43,7 @@
 						<a class="dropdown-item"
 							href="http://localhost:8080/login">Iniciar sesion</a> <a
 							class="dropdown-item"
-							href="http://localhost:8080/clientes/registrar">Registrar</a>
+							href="http://localhost:8080/registrar">Registrar</a>
 					</div>
 				</div>
 				
