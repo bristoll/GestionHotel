@@ -28,7 +28,8 @@
 <body>
 
 	<div class="container">
-		<h2>FORM</h2>
+	${listaHotelesLibres}
+		<h2 id="demo">FORM</h2>
 		<form action="/action_page.php">
 			<div class="form-group">
 				<label for="hotel">Hotel </label> <select name="hotel">
@@ -61,6 +62,8 @@
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div>
+	
+	<button onclick="pruebaFN()"></button>
 
 	<script src="/content/static/filtro.js"></script>
 </body>

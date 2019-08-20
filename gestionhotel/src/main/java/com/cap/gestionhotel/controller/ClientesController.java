@@ -106,11 +106,18 @@ public class ClientesController {
 	}
 	
 	@GetMapping("/listaLibres")
-	public String listaHotelesLibres(ModelAndView modelAndView, @RequestParam Map<String, String> datos) {
-		modelAndView.addObject("listaClientes", clientesService.listaLibres(
+	public String listaHotelesLibres(ModelAndView modelAndView, @RequestParam Map<String, String> datos,
+			HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		
+		session.setAttribute("listaHotelesLibres", clientesService.listaLibres(
 				Integer.parseInt(datos.get("numPersonas"))));
 		
-		modelAndView.setViewName("filtro");
+		/*modelAndView.addObject("listaHotelesLibres", clientesService.listaLibres(
+				Integer.parseInt(datos.get("numPersonas"))));
+		
+		modelAndView.setViewName("redirect:/filtro");*/
 		return "redirect:/filtro";
 	}
 

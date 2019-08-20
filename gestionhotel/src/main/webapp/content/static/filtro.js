@@ -10,6 +10,6 @@ var btn = document.getElementById("btn");
 
 function pruebaFN() {
 
-	prueba.textContent = "Algo";
+	prueba.textContent = ${listaHotelesLibres};
 
 }
