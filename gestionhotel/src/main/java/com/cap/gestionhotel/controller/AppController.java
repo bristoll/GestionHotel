@@ -93,5 +93,11 @@ public class AppController {
 		modelAndView.setViewName("updateHoteles");
 		return modelAndView;
 	}
+	
+	@GetMapping("/filtro")
+	public ModelAndView filtro(ModelAndView modelAndView) {
+		modelAndView.setViewName("filtro");
+		return modelAndView;
+	}
+	
 }
-

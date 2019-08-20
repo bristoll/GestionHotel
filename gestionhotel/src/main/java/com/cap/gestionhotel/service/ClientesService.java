@@ -1,6 +1,7 @@
 package com.cap.gestionhotel.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -14,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import com.cap.gestionhotel.model.ClienteLoginDto;
 import com.cap.gestionhotel.model.ClienteSimpleDto;
 import com.cap.gestionhotel.model.Clientes;
+import com.cap.gestionhotel.model.HotelBusquedaDto;
 
 @Service
 public class ClientesService {
@@ -41,6 +43,13 @@ public class ClientesService {
 				.postForEntity("http://localhost:8086/rest/clientes/login", clienteLoginDto, ClienteSimpleDto.class);
 
 		return responseEntity;
+	}
+	
+	public Map<Integer, List<HotelBusquedaDto>> listaLibres(int numPer) {
+		ResponseEntity<Map<Integer, List<HotelBusquedaDto>>> responseEntity = restTemplate.exchange("http://localhost:8086/rest/hotelesHabitacionLibre/"+numPer,
+				HttpMethod.GET, null, new ParameterizedTypeReference<Map<Integer, List<HotelBusquedaDto>>>() {
+				});
+		return responseEntity.getBody();
 	}
 
 }

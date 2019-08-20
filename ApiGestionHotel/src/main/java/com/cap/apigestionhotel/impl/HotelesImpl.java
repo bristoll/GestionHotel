@@ -8,6 +8,7 @@ import com.cap.apigestionhotel.dao.HotelesDao;
 
 import com.cap.apigestionhotel.dao.entity.Hoteles;
 import com.cap.apigestionhotel.dao.mapper.HotelesMapper;
+import com.cap.apigestionhotel.dto.HotelBusquedaDto;
 
 @Component
 public class HotelesImpl implements HotelesDao {
@@ -43,6 +44,11 @@ public class HotelesImpl implements HotelesDao {
 	public void delete(int ho_id) {
 		hotelesMapper.delete(ho_id);
 		
+	}
+
+	@Override
+	public List<HotelBusquedaDto> busquedaHotelHabitacionLibre(int numPer) {
+		return hotelesMapper.busquedaHotelHabitacionLibre(numPer);
 	}
 
 }
