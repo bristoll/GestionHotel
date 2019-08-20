@@ -1,6 +1,7 @@
 package com.cap.apigestionhotel.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.apigestionhotel.dao.entity.Hoteles;
+import com.cap.apigestionhotel.dto.HotelBusquedaDto;
 import com.cap.apigestionhotel.impl.HotelesImpl;
 import com.cap.apigestionhotel.service.HotelesService;
 
@@ -50,4 +52,9 @@ public class HotelesController {
 		return hotelesService.delete(ho_id);
 	}
 
+	@GetMapping("/hotelesHabitacionLibre/{numPer}")
+	public ResponseEntity<Map<Integer, List<HotelBusquedaDto>>> busquedaHotelHabitacionLibre(@PathVariable int numPer) {
+		return hotelesService.busquedaHotelHabitacionLibre(numPer);
+	}
+	
 }

@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Update;
 import com.cap.apigestionhotel.dao.entity.Clientes;
 import com.cap.apigestionhotel.dao.entity.Habitaciones;
 import com.cap.apigestionhotel.dao.entity.Hoteles;
+import com.cap.apigestionhotel.dto.HotelBusquedaDto;
 
 @Mapper
 public interface HotelesMapper {
@@ -28,5 +29,8 @@ public interface HotelesMapper {
 	
 	@Update("DELETE from hoteles where ho_id=#{ho_id}")
 	void delete(int ho_id);
+	
+	@Select("select ha_id ,ha_precio, ha_personas,ho_nombre, ho_direccion ,ho_id from habitaciones,hoteles where ha_dis = 'libre' and ha_personas >= #{numPer} and ha_ho_id=ho_id")
+	List<HotelBusquedaDto> busquedaHotelHabitacionLibre(int numPer);
 	
 }
