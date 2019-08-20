@@ -106,12 +106,12 @@ public class ClientesController {
 	}
 	
 	@GetMapping("/listaLibres")
-	public ModelAndView listaHotelesLibres(ModelAndView modelAndView, @RequestParam Map<String, String> datos) {
+	public String listaHotelesLibres(ModelAndView modelAndView, @RequestParam Map<String, String> datos) {
 		modelAndView.addObject("listaClientes", clientesService.listaLibres(
 				Integer.parseInt(datos.get("numPersonas"))));
 		
-		modelAndView.setViewName("listaClientes");
-		return modelAndView;
+		modelAndView.setViewName("filtro");
+		return "redirect:/filtro";
 	}
 
 }
