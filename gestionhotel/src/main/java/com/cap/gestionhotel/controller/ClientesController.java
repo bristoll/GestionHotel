@@ -115,8 +115,7 @@ public class ClientesController {
 				Integer.parseInt(datos.get("numPersonas"))));
 		
 		/*modelAndView.addObject("listaHotelesLibres", clientesService.listaLibres(
-				Integer.parseInt(datos.get("numPersonas"))));
-		
+				Integer.parseInt(datos.get("numPersonas"))));		
 		modelAndView.setViewName("redirect:/filtro");*/
 		return "redirect:/filtro";
 	}
