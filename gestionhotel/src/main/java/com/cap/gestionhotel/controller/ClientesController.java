@@ -104,5 +104,14 @@ public class ClientesController {
 		modelAndView.setViewName("redirect:/login");
 		return modelAndView;
 	}
+	
+	@GetMapping("/listaLibres")
+	public ModelAndView listaHotelesLibres(ModelAndView modelAndView, @RequestParam Map<String, String> datos) {
+		modelAndView.addObject("listaClientes", clientesService.listaLibres(
+				Integer.parseInt(datos.get("numPersonas"))));
+		
+		modelAndView.setViewName("listaClientes");
+		return modelAndView;
+	}
 
 }

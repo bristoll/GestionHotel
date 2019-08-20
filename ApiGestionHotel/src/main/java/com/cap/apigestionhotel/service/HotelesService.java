@@ -69,8 +69,10 @@ public class HotelesService {
 				
 			}
 			
-			listaFinal.put(keyID, listatemp);
-			
+			if (keyID != null) {
+				listaFinal.put(keyID, listatemp);
+			}
+
 		}
 		
 		
