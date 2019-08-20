@@ -77,14 +77,14 @@
 					</div>
 
 					<div class="form-group">
-						<label for="exampleInputDir">Dir</label> <input type="text"
+						<label for="exampleInputDir">Direccion</label> <input type="text"
 							class="form-control" id="exampleInputDir"
 							aria-describedby="emailHelp" placeholder="Enter dir" name="dir" />
 
 					</div>
 
 					<div class="form-group">
-						<label for="exampleInputCod">cod</label> <input type="text"
+						<label for="exampleInputCod">Codigo Postal</label> <input type="text"
 							class="form-control" id="exampleInputcod"
 							aria-describedby="emailHelp" placeholder="Enter cod" name="cod" />
 
@@ -92,7 +92,7 @@
 
 
 					<div class="form-group">
-						<label for="exampleInputciudad">ciudad</label> <input type="text"
+						<label for="exampleInputciudad">Ciudad</label> <input type="text"
 							class="form-control" id="exampleInputciudad"
 							aria-describedby="emailHelp" placeholder="Enter ciudad"
 							name="ciudad" />

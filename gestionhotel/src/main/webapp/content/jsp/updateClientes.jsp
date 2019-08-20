@@ -71,7 +71,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="exampleInputDir">Dir</label>
+						<label for="exampleInputDir">Direccion</label>
 						<input type="text" class="form-control"
 							id="exampleInputDir" aria-describedby="emailHelp"
 							value="${cliente.cli_direccion}" name="dir" />
@@ -79,7 +79,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="exampleInputCod">cod</label>
+						<label for="exampleInputCod">Codigo Postal</label>
 						<input type="text" class="form-control"
 							id="exampleInputcod" aria-describedby="emailHelp"
 							value="${cliente.cli_codigopos}"  name="cod" />
@@ -88,7 +88,7 @@
 					
 					
 					<div class="form-group">
-						<label for="exampleInputciudad">ciudad</label>
+						<label for="exampleInputciudad">Ciudad</label>
 						<input type="text" class="form-control"
 							id="exampleInputciudad" aria-describedby="emailHelp"
 							value="${cliente.cli_ciudad}"  name="ciudad" />
