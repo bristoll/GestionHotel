@@ -42,12 +42,6 @@
 				</c:when>
 			</c:choose>
 
-					<div class="form-group">
-						<label for="exampleInputID">ID</label> <input type="text"
-							class="form-control" ="exampleInputID"
-							aria-describedby="idHelp" placeholder="Enter ID" name="id" />
-
-					</div>
 
 					<div class="form-group">
 						<label for="exampleInputNombre">Nombre</label> <input type="text"

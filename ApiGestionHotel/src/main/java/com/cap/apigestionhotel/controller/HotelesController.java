@@ -38,7 +38,7 @@ public class HotelesController {
 	}
 	
 	@PostMapping("/hoteles")
-	public ResponseEntity<Hoteles> insert(@ModelAttribute Hoteles hotel) {
+	public ResponseEntity<Hoteles> insert(@RequestBody Hoteles hotel) {
 		return hotelesService.insert(hotel);
 	}
 

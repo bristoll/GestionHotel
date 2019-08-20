@@ -103,10 +103,9 @@ public class AdminController {
 	public ModelAndView addHoteles(ModelAndView modelAndView, @RequestParam Map<String,String> datos) {
 		Hoteles hotel = new Hoteles();
 		
-		hotel.setHo_id(Integer.parseInt(datos.get("id")));
 		hotel.setHo_nombre(datos.get("nombre"));
 		hotel.setHo_zona(datos.get("zona"));
-		hotel.setHo_direccion(datos.get("direccion"));
+		hotel.setHo_direccion(datos.get("dir"));
 		hotel.setHo_categoria(datos.get("categoria"));
 
 		
@@ -122,7 +121,7 @@ public class AdminController {
 		hotel.setHo_id(Integer.parseInt(datos.get("id")));
 		hotel.setHo_nombre(datos.get("nombre"));
 		hotel.setHo_zona(datos.get("zona"));
-		hotel.setHo_direccion(datos.get("direccion"));
+		hotel.setHo_direccion(datos.get("dir"));
 		hotel.setHo_categoria(datos.get("categoria"));
 		
 		adminService.updateHoteles(hotel);
