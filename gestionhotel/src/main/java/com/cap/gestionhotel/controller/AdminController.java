@@ -1,8 +1,17 @@
 package com.cap.gestionhotel.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
+import java.util.Properties;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +22,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cap.gestionhotel.model.ClienteLoginDto;
+import com.cap.gestionhotel.model.ClienteSimpleDto;
 import com.cap.gestionhotel.model.Clientes;
 import com.cap.gestionhotel.model.Hoteles;
 import com.cap.gestionhotel.service.AdminService;
@@ -128,5 +139,41 @@ public class AdminController {
 		modelAndView.setViewName("redirect:/admin/listaHoteles");
 		return modelAndView;
 	}
+	
+	@PostMapping("/login")
+	public ModelAndView loginAdmin(ModelAndView modelAndView, @RequestParam Map<String, String> datos,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		try {
+            Properties properties = new Properties();
+
+            InputStream inputStream = getClass().getResourceAsStream("props/mispropiedades.properties");
+
+            properties.load(inputStream);
+
+            String userp = properties.getProperty("user");
+            String passp = properties.getProperty("pass");
+            
+            String user = datos.get("email");
+            String pass = datos.get("pass");
+           
+   			if (userp.equals(user) && passp.equals(pass)) {
+   				session.setAttribute("adminLogin", true);
+   				modelAndView.setViewName("redirect:/");
+   			} else {
+   				session.setAttribute("adminLogin", false);
+
+   				modelAndView.setViewName("redirect:/admin");
+   			}
+
+        } catch (IOException ex) {
+           
+        }
+		return modelAndView;
+
+
+	}
+
 	
 }

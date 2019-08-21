@@ -68,7 +68,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="exampleInputDir">Dir</label> <input type="text"
+						<label for="exampleInputDir">Direccion</label> <input type="text"
 							class="form-control" ="exampleInputDir"
 							aria-describedby="dirHelp" placeholder="Enter dir" name="dir" />
 
