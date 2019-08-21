@@ -49,9 +49,9 @@ function pruebaAjax(){
 	      var lista = JSON.parse(listaLibres);
 	      console.log(lista);
 	      
-	      for(var o in lista){
+	      for(var valor in lista){
 	    	  
-	    	  console.log(o);
+	    	  console.log(lista[valor][0].ho_nombre); 
 	    	  
 	      }
 	    }
