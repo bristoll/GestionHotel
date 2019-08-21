@@ -90,6 +90,16 @@ public class AppController {
 		return modelAndView;
 	}
 
+	
+	
+	@GetMapping("/admin")
+	public ModelAndView adminIndex(ModelAndView modelAndView) {
+		modelAndView.setViewName("loginAdmin");
+		return modelAndView;
+	}
+	
+
+
 	@GetMapping("/filtro")
 	public ModelAndView filtro(ModelAndView modelAndView) {
 		modelAndView.setViewName("filtro");
