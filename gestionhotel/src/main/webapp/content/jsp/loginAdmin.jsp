@@ -26,11 +26,11 @@
 	<div class="row justify-content-center">
 		<div class="form-group col-md-5">
 
-			<form action="/clientes/login" method="post">
+			<form action="/admin/login" method="post">
 
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email</label>
-						<input type="email" class="form-control"
+						<input type="text" class="form-control"
 							id="exampleInputEmail1" aria-describedby="emailHelp"
 							placeholder="Enter email" name="email" />
 

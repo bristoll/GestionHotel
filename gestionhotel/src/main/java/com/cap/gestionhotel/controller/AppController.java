@@ -100,8 +100,6 @@ public class AppController {
 	
 
 
-
-
 	@GetMapping("/filtro")
 	public ModelAndView filtro(ModelAndView modelAndView) {
 		modelAndView.setViewName("filtro");

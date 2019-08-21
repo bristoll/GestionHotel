@@ -142,27 +142,33 @@ public class AdminController {
 	
 	@PostMapping("/login")
 	public ModelAndView loginAdmin(ModelAndView modelAndView, @RequestParam Map<String, String> datos,
-			HttpServletResponse response) {
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
 		
 		try {
             Properties properties = new Properties();
 
-            InputStream inputStream = getClass().getResourceAsStream("/gestionhotel/src/main/resources/application.properties");
+            InputStream inputStream = getClass().getResourceAsStream("props/mispropiedades.properties");
 
             properties.load(inputStream);
 
-            String user = properties.getProperty("user");
-            String pass = properties.getProperty("passwd");
+            String userp = properties.getProperty("user");
+            String passp = properties.getProperty("pass");
+            
+            String user = datos.get("email");
+            String pass = datos.get("pass");
            
-   			if (user.equals(datos.get("email")) && pass.equals(datos.get("pass"))) {
-   				response.sendRedirect("jsp/error.jsp");
-   				//modelAndView.setViewName("redirect:/");
+   			if (userp.equals(user) && passp.equals(pass)) {
+   				session.setAttribute("adminLogin", true);
+   				modelAndView.setViewName("redirect:/");
    			} else {
-   				modelAndView.setViewName("redirect:/admin/login");
+   				session.setAttribute("adminLogin", false);
+
+   				modelAndView.setViewName("redirect:/admin");
    			}
 
         } catch (IOException ex) {
-           // Logger.getLogger(DaoEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+           
         }
 		return modelAndView;
 
