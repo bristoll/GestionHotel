@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,8 @@ import com.cap.gestionhotel.service.ClientesService;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+	
+
 
 	@Autowired
 	AdminService adminService;
@@ -140,36 +143,29 @@ public class AdminController {
 		return modelAndView;
 	}
 	
+	@Value("${user}")
+	private String userp;
+	
+	@Value("${pass}")
+	private String passp;
+	
 	@PostMapping("/login")
 	public ModelAndView loginAdmin(ModelAndView modelAndView, @RequestParam Map<String, String> datos,
 			HttpServletRequest request) {
+		
 		HttpSession session = request.getSession();
 		
-		try {
-            Properties properties = new Properties();
+		String user = datos.get("email");
+		String pass = datos.get("pass");
+         
+		if (userp.equals(user) && passp.equals(pass)) {
+			session.setAttribute("adminLogin", true);
+			modelAndView.setViewName("redirect:/");
+		} else {
+			session.setAttribute("adminLogin", false);
 
-            InputStream inputStream = getClass().getResourceAsStream("props/mispropiedades.properties");
-
-            properties.load(inputStream);
-
-            String userp = properties.getProperty("user");
-            String passp = properties.getProperty("pass");
-            
-            String user = datos.get("email");
-            String pass = datos.get("pass");
-           
-   			if (userp.equals(user) && passp.equals(pass)) {
-   				session.setAttribute("adminLogin", true);
-   				modelAndView.setViewName("redirect:/");
-   			} else {
-   				session.setAttribute("adminLogin", false);
-
-   				modelAndView.setViewName("redirect:/admin");
-   			}
-
-        } catch (IOException ex) {
-           
-        }
+			modelAndView.setViewName("redirect:/admin");
+		}
 		return modelAndView;
 
 
