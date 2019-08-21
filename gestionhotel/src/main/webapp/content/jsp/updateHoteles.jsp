@@ -71,7 +71,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="exampleInputDir">Dir</label>
+						<label for="exampleInputDir">Direccion</label>
 						<input type="text" class="form-control"
 							id="exampleInputDir" aria-describedby="dirHelp"
 							value="${hotel.ho_direccion}" name="dir" />

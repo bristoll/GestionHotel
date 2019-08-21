@@ -42,7 +42,7 @@ public class AppController {
 
 		session.setAttribute("ruta", "registrar");
 
-		modelAndView.setViewName("addcliente");
+		modelAndView.setViewName("addClientes");
 		return modelAndView;
 	} 
 	
@@ -93,5 +93,14 @@ public class AppController {
 		modelAndView.setViewName("updateHoteles");
 		return modelAndView;
 	}
+	
+	
+	@GetMapping("/admin")
+	public ModelAndView adminIndex(ModelAndView modelAndView) {
+		modelAndView.setViewName("loginAdmin");
+		return modelAndView;
+	}
+	
+
 }
 

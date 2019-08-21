@@ -1,8 +1,17 @@
 package com.cap.gestionhotel.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
+import java.util.Properties;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +22,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cap.gestionhotel.model.ClienteLoginDto;
+import com.cap.gestionhotel.model.ClienteSimpleDto;
 import com.cap.gestionhotel.model.Clientes;
 import com.cap.gestionhotel.model.Hoteles;
 import com.cap.gestionhotel.service.AdminService;
@@ -128,5 +139,35 @@ public class AdminController {
 		modelAndView.setViewName("redirect:/admin/listaHoteles");
 		return modelAndView;
 	}
+	
+	@PostMapping("/login")
+	public ModelAndView loginAdmin(ModelAndView modelAndView, @RequestParam Map<String, String> datos,
+			HttpServletResponse response) {
+		
+		try {
+            Properties properties = new Properties();
+
+            InputStream inputStream = getClass().getResourceAsStream("/gestionhotel/src/main/resources/application.properties");
+
+            properties.load(inputStream);
+
+            String user = properties.getProperty("user");
+            String pass = properties.getProperty("passwd");
+           
+   			if (user.equals(datos.get("email")) && pass.equals(datos.get("pass"))) {
+   				response.sendRedirect("jsp/error.jsp");
+   				//modelAndView.setViewName("redirect:/");
+   			} else {
+   				modelAndView.setViewName("redirect:/admin/login");
+   			}
+
+        } catch (IOException ex) {
+           // Logger.getLogger(DaoEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		return modelAndView;
+
+
+	}
+
 	
 }
