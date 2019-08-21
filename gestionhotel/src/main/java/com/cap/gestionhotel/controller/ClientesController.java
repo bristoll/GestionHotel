@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +29,7 @@ import org.springframework.web.servlet.View;
 import com.cap.gestionhotel.model.ClienteLoginDto;
 import com.cap.gestionhotel.model.ClienteSimpleDto;
 import com.cap.gestionhotel.model.Clientes;
+import com.cap.gestionhotel.model.HotelBusquedaDto;
 import com.cap.gestionhotel.service.AdminService;
 import com.cap.gestionhotel.service.ClientesService;
 
@@ -105,19 +107,18 @@ public class ClientesController {
 		return modelAndView;
 	}
 	
-	@GetMapping("/listaLibres")
-	public String listaHotelesLibres(ModelAndView modelAndView, @RequestParam Map<String, String> datos,
-			HttpServletRequest request) {
+	@GetMapping("/listaLibres/{numPersonas}")
+	public ResponseEntity<Map<Integer, List<HotelBusquedaDto>>> listaHotelesLibres(ModelAndView modelAndView, @PathVariable int numPersonas) {
 		
-		HttpSession session = request.getSession();
-		
-		session.setAttribute("listaHotelesLibres", clientesService.listaLibres(
-				Integer.parseInt(datos.get("numPersonas"))));
-		
+//		HttpSession session = request.getSession();
+//		
+//		session.setAttribute("listaHotelesLibres", clientesService.listaLibres(numPersonas));
+//		
 		/*modelAndView.addObject("listaHotelesLibres", clientesService.listaLibres(
 				Integer.parseInt(datos.get("numPersonas"))));		
 		modelAndView.setViewName("redirect:/filtro");*/
-		return "redirect:/filtro";
+		//return "redirect:/filtro";
+		return clientesService.listaLibres(numPersonas);
 	}
 
 }
