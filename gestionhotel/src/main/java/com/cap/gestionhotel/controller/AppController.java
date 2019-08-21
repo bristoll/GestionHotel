@@ -19,16 +19,16 @@ public class AppController {
 
 	@Autowired
 	ClientesService clientesService;
-	
+
 	@Autowired
 	HotelesService hotelesService;
-	
+
 	@GetMapping("/")
 	public ModelAndView defaultIndex(ModelAndView modelAndView) {
 		modelAndView.setViewName("index");
 		return modelAndView;
 	}
-		
+
 	@GetMapping("/login")
 	public ModelAndView login(ModelAndView modelAndView) {
 		modelAndView.setViewName("login");
@@ -44,55 +44,52 @@ public class AppController {
 
 		modelAndView.setViewName("addClientes");
 		return modelAndView;
-	} 
-	
-		@GetMapping("/addClientes")
-			public ModelAndView addClientes(ModelAndView modelAndView, HttpServletRequest request) {
+	}
 
-				HttpSession session = request.getSession();
+	@GetMapping("/addClientes")
+	public ModelAndView addClientes(ModelAndView modelAndView, HttpServletRequest request) {
 
-				session.setAttribute("ruta", "add");
+		HttpSession session = request.getSession();
 
-				modelAndView.setViewName("addClientes");
-				return modelAndView;
-			} 
-		 
+		session.setAttribute("ruta", "add");
 
-	
+		modelAndView.setViewName("addClientes");
+		return modelAndView;
+	}
+
 	@GetMapping("/updateClientes/{cli_dni}")
 	public ModelAndView updateClientes(ModelAndView modelAndView, @PathVariable String cli_dni) {
-		
-		Clientes cliente =clientesService.buscarCliente(cli_dni);
-		
+
+		Clientes cliente = clientesService.buscarCliente(cli_dni);
+
 		modelAndView.addObject("clienteUpdate", cliente);
-		
+
 		modelAndView.setViewName("updateClientes");
 		return modelAndView;
 	}
-	
-		@GetMapping("/addHoteles")
-			public ModelAndView addHoteles(ModelAndView modelAndView, HttpServletRequest request) {
 
-				HttpSession session = request.getSession();
+	@GetMapping("/addHoteles")
+	public ModelAndView addHoteles(ModelAndView modelAndView, HttpServletRequest request) {
 
-				session.setAttribute("ruta", "add");
+		HttpSession session = request.getSession();
 
-				modelAndView.setViewName("addHoteles");
-				return modelAndView;
-			} 
-		 
+		session.setAttribute("ruta", "add");
 
-	
+		modelAndView.setViewName("addHoteles");
+		return modelAndView;
+	}
+
 	@GetMapping("/updateHoteles/{ho_id}")
 	public ModelAndView updateHoteles(ModelAndView modelAndView, @PathVariable int ho_id) {
-		
-		Hoteles hotel =hotelesService.buscarHoteles(ho_id);
-		
+
+		Hoteles hotel = hotelesService.buscarHoteles(ho_id);
+
 		modelAndView.addObject("hotelesUpdate", hotel);
-		
+
 		modelAndView.setViewName("updateHoteles");
 		return modelAndView;
 	}
+
 	
 	
 	@GetMapping("/admin")
@@ -102,5 +99,13 @@ public class AppController {
 	}
 	
 
-}
 
+
+
+	@GetMapping("/filtro")
+	public ModelAndView filtro(ModelAndView modelAndView) {
+		modelAndView.setViewName("filtro");
+		return modelAndView;
+	}
+
+}
