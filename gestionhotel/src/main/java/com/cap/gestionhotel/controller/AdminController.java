@@ -180,7 +180,6 @@ public class AdminController {
 			modelAndView.setViewName("redirect:/admin");
 			contador++;
 			session.setAttribute("contLogin", contador);
-			
 		}
 		
 		if(contador==3) {
