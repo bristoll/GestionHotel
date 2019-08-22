@@ -29,10 +29,10 @@
 			<form action="/admin/login" method="post">
 
 					<div class="form-group">
-						<label for="exampleInputEmail1">Email</label>
+						<label for="user">Usuario</label>
 						<input type="text" class="form-control"
-							id="exampleInputEmail1" aria-describedby="emailHelp"
-							placeholder="Enter email" name="email" />
+							id="user" 
+							placeholder="Introduce usuario" name="user" />
 
 					</div>
 

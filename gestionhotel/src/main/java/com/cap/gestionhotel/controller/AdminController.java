@@ -155,7 +155,7 @@ public class AdminController {
 		
 		HttpSession session = request.getSession();
 		
-		String user = datos.get("email");
+		String user = datos.get("user");
 		String pass = datos.get("pass");
          
 		if (userp.equals(user) && passp.equals(pass)) {
