@@ -18,15 +18,10 @@
 					href="http://localhost:8080/admin/listaClientes">clientes</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="http://localhost:8080/admin/listaHoteles">hoteles</a></li>
-				<div class="dropdown">
-					<span class="navbar-text dropdown-toggle" id="navbarDropdown"
-						role="button" data-toggle="dropdown"><c:out
-							value="Admin" /></span>
-	
-					<div class="dropdown-menu dropdown-menu-sm-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="http://localhost:8080/clientes/logout">Cerrar sesión</a>
-					</div>
-				</div>	
+					
+					
+										
+				
 			 </c:if>
 		</ul>
 		<ul class="navbar-nav">
@@ -63,6 +58,17 @@
 					
 				</c:otherwise>
 			</c:choose>
+		</c:if>
+		<c:if test = "${adminLogin}">
+		<div class="dropdown">
+					<span class="navbar-text dropdown-toggle" id="navbarDropdown"
+						role="button" data-toggle="dropdown"><c:out
+							value="admin" /></span>
+	
+					<div class="dropdown-menu dropdown-menu-sm-right" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="http://localhost:8080/clientes/logout">Cerrar sesión</a>
+					</div>
+				</div>
 		</c:if>
 	  </ul>	
 	</div>
