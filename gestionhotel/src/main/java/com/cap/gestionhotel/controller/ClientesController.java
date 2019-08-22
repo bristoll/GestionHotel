@@ -45,6 +45,8 @@ public class ClientesController {
 
 	@Autowired
 	ClienteLoginDto clienteLoginDto;
+	
+	private int contador=0;
 
 	@GetMapping("/listaClientes")
 	public ModelAndView listaClientes(ModelAndView modelAndView) {
@@ -58,6 +60,15 @@ public class ClientesController {
 			HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("clienteLogin") != null) {
+			contador = (int) session.getAttribute("clienteLogin");
+			//contador++;
+				
+		}else {
+			session.setAttribute("clienteLogin", 0);
+			contador=0;
+		}
 
 		clienteLoginDto.setEmail(datos.get("email"));
 		clienteLoginDto.setPass(datos.get("pass"));
@@ -65,20 +76,26 @@ public class ClientesController {
 		ResponseEntity<ClienteSimpleDto> response = clientesService.login(clienteLoginDto);
 
 		if (response.getStatusCode().equals(HttpStatus.OK)) {
-			// modelAndView.addObject("clienteLogin", response.getBody());
 			session.setAttribute("clienteLogin", response.getBody());
 			modelAndView.setViewName("redirect:/");
+			
 		} else {
+			session.setAttribute("adminLogin", false);
 			modelAndView.setViewName("redirect:/login");
+			contador++;
+			session.setAttribute("clienteLogin", contador);
 		}
-
+		
+		if(contador==2) {
+			session.setAttribute("clienteLogin", 0);
+			modelAndView.setViewName("redirect:/error");
+		}
 		return modelAndView;
 	}
 
 	@GetMapping("/logout")
 	public ModelAndView logout(ModelAndView modelAndView, HttpServletRequest request) {
 
-//		modelAndView.addObject("clienteLogin", new ClienteSimpleDto());
 		HttpSession session = request.getSession();
 		session.invalidate();
 
