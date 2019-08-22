@@ -37,24 +37,19 @@ var btn = document.getElementById("btn");
 //		  xhttp.send();
 //		  }
 //}
-function pruebaAjax(){
+function rellenar(){
 	
 	  var listaLibres;
 	  var xhttp = new XMLHttpRequest();
+	  
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
-	      document.getElementById("demo").innerHTML = "ajax ejecutado correctamente";
-	      listaLibres=this.response;
-	      console.log(listaLibres);
-	      var lista = JSON.parse(listaLibres);
-	      console.log(lista);
+	    	
+	    var opcion = document.getElementById("hotel").value;
+	    var select =document.getElementById("habitaciones");
 	      
-	      for(var valor in lista){
-	    	  
-	    	  console.log(lista[valor][0].ho_nombre); 
-	    	  
-	      }
-	    }
+	      var nuevo=document.createElement('option').appendChild(document.createTextNode('pacuco pacuquín')).value="prueba";
+	      select.appendChild(nuevo);
 	  };
 	  xhttp.open("GET", "/clientes/listaLibres/3", true);
 	  //xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

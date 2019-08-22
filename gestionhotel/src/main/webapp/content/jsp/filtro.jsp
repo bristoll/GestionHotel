@@ -30,33 +30,25 @@
 	<div class="container">
 	${listaHotelesLibres}
 		<h2 id="demo">FORM</h2>
-		<form action="/action_page.php">
+		<form action="">
 			<div class="form-group">
 				<label for="hotel">Hotel </label> 
-				<select name="hotel">
+				<select name="hotel" onchange="rellenar()" id="hotel">
 					
 					<c:forEach var="hotel" items="${listaHotelesLibres}">
 				
-					<option value="${hotel}">${hotel}</option>
+					<option value="${hotel.key}">${hotel.value}</option>
 				
 			</c:forEach>
 				</select>
 			</div>
 
-			<div class="form-group">
-				<label for="precio">Precio </label> <input type="range"
-					name="precio" min="0" max="500">
-			</div>
+
 
 			<div class="form-group">
-				<label for="zona">Zona </label> <input type="checkbox" name="centro"
-					value="centro">Centro<br> <input type="checkbox"
-					name="afueras" value="afueras">Afueras<br>
-			</div>
-
-			<div class="form-group">
-				<label for="hotel">Hotel </label> <select name="hotel">
-					<option value="vacio">Vacio</option>
+				<label for="habitaciones">Habitaciones </label> 
+				<select name="habitaciones" id="habitaciones">
+					
 				</select>
 			</div>
 
@@ -69,7 +61,7 @@
 		</form>
 	</div>
 	
-	<button onclick="pruebaFN()"></button>
+	<button onclick="rellenar()"></button>
 
 	<script src="/content/static/filtro.js"></script>
 </body>

@@ -1,6 +1,7 @@
 package com.cap.gestionhotel.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -47,15 +48,15 @@ public class ClientesService {
 		return responseEntity;
 	}
 	
-	public List<String> listaLibres(int numPer) {
+	public Map<Integer, String> listaLibres(int numPer) {
 		ResponseEntity<Map<Integer, List<HotelBusquedaDto>>> responseEntity = restTemplate.exchange("http://localhost:8086/rest/hotelesHabitacionLibre/"+numPer,
 				HttpMethod.GET, null, new ParameterizedTypeReference<Map<Integer, List<HotelBusquedaDto>>>() {
 				});
 		Map<Integer, List<HotelBusquedaDto>> respuesta=responseEntity.getBody();
 			 Set<Integer> keys=respuesta.keySet();
-			 List<String> nombreHotel = new ArrayList<String>();
+			 Map<Integer,String> nombreHotel = new HashMap<Integer, String>();
 					 for (Integer key : keys) {
-						nombreHotel.add(respuesta.get(key).get(0).getHo_nombre());
+						nombreHotel.put(respuesta.get(key).get(0).getHo_id(),respuesta.get(key).get(0).getHo_nombre());
 					}
 		return nombreHotel;
 	}
