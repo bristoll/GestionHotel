@@ -39,6 +39,8 @@ public class AdminController {
 	@Autowired
 	AdminService adminService;
 	
+	private int contador=0;
+	
 	@GetMapping("/listaClientes")
 	public ModelAndView listaClientes(ModelAndView modelAndView) {
 		modelAndView.addObject("listaClientes", adminService.listaClientes());
@@ -149,23 +151,43 @@ public class AdminController {
 	@Value("${pass}")
 	private String passp;
 	
+	
 	@PostMapping("/login")
 	public ModelAndView loginAdmin(ModelAndView modelAndView, @RequestParam Map<String, String> datos,
 			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
+				
+		if (session.getAttribute("contLogin") != null) {
+			contador = (int) session.getAttribute("contLogin");
+		//	contador++;
+				
+		}else {
+			session.setAttribute("contLogin", 0);
+			contador=0;
+			}
 		
 		String user = datos.get("email");
 		String pass = datos.get("pass");
+	
+		
          
 		if (userp.equals(user) && passp.equals(pass)) {
 			session.setAttribute("adminLogin", true);
 			modelAndView.setViewName("redirect:/");
 		} else {
 			session.setAttribute("adminLogin", false);
-
 			modelAndView.setViewName("redirect:/admin");
+			contador++;
+			session.setAttribute("contLogin", contador);
+			
 		}
+		
+		if(contador==3) {
+			session.setAttribute("contLogin", 0);
+			modelAndView.setViewName("redirect:/error");
+		}
+		
 		return modelAndView;
 
 
