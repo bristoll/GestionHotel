@@ -90,7 +90,6 @@ public class ClientesController {
 			session.setAttribute("clienteLogin", 0);
 			modelAndView.setViewName("redirect:/error");
 		}
-
 		return modelAndView;
 	}
 
