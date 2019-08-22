@@ -62,12 +62,12 @@ public class ClientesController {
 
 		HttpSession session = request.getSession();
 		
-		if (session.getAttribute("clienteLogin") != null) {
-			contador = (int) session.getAttribute("clienteLogin");
+		if (session.getAttribute("contClienteLogin") != null) {
+			contador = (int) session.getAttribute("contClienteLogin");
 			//contador++;
 				
 		}else {
-			session.setAttribute("clienteLogin", 0);
+			session.setAttribute("contClienteLogin", 0);
 			contador=0;
 		}
 
@@ -84,11 +84,11 @@ public class ClientesController {
 			session.setAttribute("adminLogin", false);
 			modelAndView.setViewName("redirect:/login");
 			contador++;
-			session.setAttribute("clienteLogin", contador);
+			session.setAttribute("contClienteLogin", contador);
 		}
 		
-		if(contador==2) {
-			session.setAttribute("clienteLogin", 0);
+		if(contador==3) {
+			session.setAttribute("contClienteLogin", 0);
 			modelAndView.setViewName("redirect:/error");
 		}
 		return modelAndView;
