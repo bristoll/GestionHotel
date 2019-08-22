@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -107,18 +108,19 @@ public class ClientesController {
 		return modelAndView;
 	}
 	
-	@GetMapping("/listaLibres/{numPersonas}")
-	public ResponseEntity<Map<Integer, List<HotelBusquedaDto>>> listaHotelesLibres(ModelAndView modelAndView, @PathVariable int numPersonas) {
+	@GetMapping("/listaLibres")
+	public String listaHotelesLibres(ModelAndView modelAndView,@RequestParam Map<String, String> datos , HttpServletRequest request) {
 		
-//		HttpSession session = request.getSession();
-//		
-//		session.setAttribute("listaHotelesLibres", clientesService.listaLibres(numPersonas));
+		HttpSession session = request.getSession();
+		
+	session.setAttribute("listaHotelesLibres", clientesService.listaLibres(Integer.parseInt(datos.get("numPersonas"))));
 //		
 		/*modelAndView.addObject("listaHotelesLibres", clientesService.listaLibres(
 				Integer.parseInt(datos.get("numPersonas"))));		
 		modelAndView.setViewName("redirect:/filtro");*/
-		//return "redirect:/filtro";
-		return clientesService.listaLibres(numPersonas);
+		//
+		 
+		 return "redirect:/filtro";
 	}
 
 }

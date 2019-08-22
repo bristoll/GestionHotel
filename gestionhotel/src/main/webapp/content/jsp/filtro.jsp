@@ -32,8 +32,14 @@
 		<h2 id="demo">FORM</h2>
 		<form action="/action_page.php">
 			<div class="form-group">
-				<label for="hotel">Hotel </label> <select name="hotel">
-					<option value="vacio">Vacio</option>
+				<label for="hotel">Hotel </label> 
+				<select name="hotel">
+					
+					<c:forEach var="hotel" items="${listaHotelesLibres}">
+				
+					<option value="${hotel}">${hotel}</option>
+				
+			</c:forEach>
 				</select>
 			</div>
 
