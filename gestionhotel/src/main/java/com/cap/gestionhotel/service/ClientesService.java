@@ -60,5 +60,13 @@ public class ClientesService {
 					}
 		return nombreHotel;
 	}
+	
+	public Map<Integer, List<HotelBusquedaDto>> listaHabLibres(int numPer) {
+		ResponseEntity<Map<Integer, List<HotelBusquedaDto>>> responseEntity = restTemplate.exchange("http://localhost:8086/rest/hotelesHabitacionLibre/"+numPer,
+				HttpMethod.GET, null, new ParameterizedTypeReference<Map<Integer, List<HotelBusquedaDto>>>() {
+				});
+			
+		return responseEntity.getBody();
+	}
 
 }

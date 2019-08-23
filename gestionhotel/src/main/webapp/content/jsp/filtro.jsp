@@ -33,7 +33,7 @@
 		<form action="">
 			<div class="form-group">
 				<label for="hotel">Hotel </label> 
-				<select name="hotel" onchange="rellenar()" id="hotel">
+				<select name="hotel" id="hotel">
 					
 					<c:forEach var="hotel" items="${listaHotelesLibres}">
 				
@@ -42,8 +42,6 @@
 			</c:forEach>
 				</select>
 			</div>
-
-
 
 			<div class="form-group">
 				<label for="habitaciones">Habitaciones </label> 
@@ -61,7 +59,7 @@
 		</form>
 	</div>
 	
-	<button onclick="rellenar()"></button>
+	<button onclick="pruebaFN()"></button>
 
 	<script src="/content/static/filtro.js"></script>
 </body>

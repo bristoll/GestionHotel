@@ -107,20 +107,32 @@ public class ClientesController {
 		modelAndView.setViewName("redirect:/login");
 		return modelAndView;
 	}
-	
+
 	@GetMapping("/listaLibres")
-	public String listaHotelesLibres(ModelAndView modelAndView,@RequestParam Map<String, String> datos , HttpServletRequest request) {
-		
+	public String listaHotelesLibres(ModelAndView modelAndView, @RequestParam Map<String, String> datos,
+			HttpServletRequest request) {
+
 		HttpSession session = request.getSession();
-		
-	session.setAttribute("listaHotelesLibres", clientesService.listaLibres(Integer.parseInt(datos.get("numPersonas"))));
+
+		session.setAttribute("listaHotelesLibres",
+				clientesService.listaLibres(Integer.parseInt(datos.get("numPersonas"))));
 //		
-		/*modelAndView.addObject("listaHotelesLibres", clientesService.listaLibres(
-				Integer.parseInt(datos.get("numPersonas"))));		
-		modelAndView.setViewName("redirect:/filtro");*/
+		/*
+		 * modelAndView.addObject("listaHotelesLibres", clientesService.listaLibres(
+		 * Integer.parseInt(datos.get("numPersonas"))));
+		 * modelAndView.setViewName("redirect:/filtro");
+		 */
 		//
-		 
-		 return "redirect:/filtro";
+
+		return "redirect:/filtro";
+	}
+
+	@GetMapping("/listaHabLibres/{num}")
+	public ResponseEntity<Map<Integer, List<HotelBusquedaDto>>> listaHabitacionesLibres(@PathVariable int num) {
+		
+		
+		return new ResponseEntity<>(clientesService.listaHabLibres(num), HttpStatus.OK);
+
 	}
 
 }
